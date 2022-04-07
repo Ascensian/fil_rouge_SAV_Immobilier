@@ -5,12 +5,53 @@ flex: 1;
 height: 1px;
 background: #eee;
 }
-
+.container{
+    padding:0%;
+}
 img{
-    width: 400px
+    width: 75%;
+    margin-left: 15vh ;
 }
 
 #head, #footer {
-    height: 50px;
+    height: 5vh;
     background-color: lightblue;
+}
+
+#test{
+    margin-top: 31vh;
+    margin-bottom: 31vh;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px){
+    img{
+        width: 70%;
+        align-items: center;
+        margin-left: 5vh ;
+    }
+
+    #test{
+        margin-top: 20vh;
+        margin-bottom: 20vh;
+        width: 70%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 992px){
+    img{
+        width: 70%;
+        align-items: center;
+        margin-left: 10vh ;
+    }
+
+    #test{
+        margin-top: 20vh;
+        margin-bottom: 20vh;
+        align-items: center;
+        justify-content: center;
+    }
 }
