@@ -1,0 +1,146 @@
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #2470dc;
+}
+
+.btn-group{
+  width: 10% !important;
+}
+
+.sidebar .nav-link.active {
+  color: white;
+}
+
+.nav-link{
+  color: white !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+.sidebar{
+  background-color: #00a2ff !important;
+  width: 10%;
+}
+
+/*
+ * Navbar
+ */
+
+#btnselect{
+  width: 35px !important;
+}
+
+.nav-item{
+  font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', sans-serif;
+  font-size: larger;
+  padding-bottom: 20%;
+  padding-top: 20%;
+  color: #f1f1f1;
+  
+}
+
+.navbar-brand {
+  
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: #2470dcd6;
+  box-shadow: inset -1px 0 0 #2470dc;
+}
+
+.navbar-nav{
+  flex-direction: row;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: 1rem 35rem 1rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: #f1f1f1;
+  border-color: #2470dc;
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+.bg-dark{
+  background-color: #2470dc !important;
+}
+#img1 {
+  width: 10%;
+  flex-direction: row;
+}
+
+.btn-check:focus+.btn, .btn:focus {
+  outline: 0; 
+  box-shadow: none;
+}
+
