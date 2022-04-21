@@ -1,4 +1,6 @@
 <?php
-
+require("../classes/connexion.class.php");
 session_start();
-var_dump($session);
+
+Connexion::getConnexion($_POST["identifiant"], $_POST["mdp"]);
+echo "ok";
