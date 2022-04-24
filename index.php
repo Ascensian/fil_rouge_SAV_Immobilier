@@ -8,7 +8,7 @@ session_start();
 $action = "connexion";
 $msgErreur = "";
 if (isset($_POST['action'])) {
-    if ($_POST['action'] == "connexionMAJ") {
+    if ($_POST['action'] == "dashboard") {
         try {
             $compte = ConnexionMgr::controleconnexion($_POST["identifiant"], $_POST["mdp"]);
             $_SESSION["id"] = $compte[0]["idEmploye"];
@@ -27,7 +27,15 @@ switch ($action) {
     case "connexion":
         require("vues/view_connexion.php");
         break;
-    case "connexionMAJ": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
-        header('Location: vues/dashboard.html');
+    case "dashboard": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
+        header('Location: vues/view_dashboard.php');
         break;
+    case "commande":
+        require("../vues/view_commande.php");
+    case "ticket":
+        require("..vues/view_ticket.php");
+    case "client":
+        require("..vues/view_client.php");
+    case "article":
+        require("..vues/view_article.php");
 }
