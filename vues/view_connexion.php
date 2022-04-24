@@ -37,7 +37,7 @@
 
                         <!-- Submit button -->
                         <div class="row">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="action" id="connexionMAJ" value="connexionMAJ">Connexion</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="action" id="dashboard" value="dashboard">Connexion</button>
                         </div>
                     </form>
                     <div>
