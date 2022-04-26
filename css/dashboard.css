@@ -13,11 +13,12 @@ body {
  */
 
 .contenu{
-  width: none;
+  width: 90%;
+  
 }
 
 .sidebar {
-  position: relative;
+  /* position: absolute; */
   top: 0;
   /* rtl:raw:
   right: 0;
@@ -26,7 +27,7 @@ body {
   /* rtl:remove */
   left: 0;
   z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
+  padding: 0 15px 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
