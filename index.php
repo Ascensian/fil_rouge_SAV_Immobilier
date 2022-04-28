@@ -33,7 +33,7 @@ switch ($action) {
     case "commande":
         require("../vues/view_commande.php");
     case "ticket":
-        require("..vues/view_ticket.php");
+        header("..controller/ticketController.php");
     case "client":
         require("..vues/view_client.php");
     case "article":
