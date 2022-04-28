@@ -1,0 +1,18 @@
+#ticketbtn{
+  
+    width : 50vh !important;
+    height : 10vh;
+    /* background-color : lightcoral; */
+  }
+  
+form{
+    margin-top : 3.5vh;
+    margin-left: 1.5vh;
+    width : 10vh;
+    display: inline-block;
+
+}
+
+.title{
+    margin-left: 1.5vh; 
+}

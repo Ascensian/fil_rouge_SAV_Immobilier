@@ -9,7 +9,11 @@ $action = "ticket";
 $msgErreur = "";
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
+    $_SESSION["post"] = $action;
 }
+// if (isset($_POST['action'])){
+
+// }
 
 switch ($action) {
     case "ticket":

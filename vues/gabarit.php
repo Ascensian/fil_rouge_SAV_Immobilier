@@ -10,11 +10,11 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href="../css/dashboard.css" rel="stylesheet">
-  <link href="../css/test.css" rel="stylesheet">
+  <link href="../css/ticket.css" rel="stylesheet">
 </head>
 
 <body>
-
+  <balise id="hautDePage"></balise>
   <!-- NAVBAR  -->
 
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -38,7 +38,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Compte</a>
+        <a class="nav-link px-3" href="#"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?></a>
       </div>
     </div>
   </header>
@@ -100,6 +100,7 @@
       </nav>
       <div class="contenu">
         <?= $contenu ?>
+        <a href="#hautDePage">Haut de page</a>
       </div>
       <!-- FOOTER  -->
 
