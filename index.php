@@ -38,4 +38,6 @@ switch ($action) {
         require("..vues/view_client.php");
     case "article":
         require("..vues/view_article.php");
+    case 'advancedResearch':
+        require("..vues/view_advancedResearch.php");
 }

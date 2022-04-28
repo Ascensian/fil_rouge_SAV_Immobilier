@@ -55,7 +55,14 @@
       <li><button class="dropdown-item btn1" type="button" >Client</button></li>
     </ul>
   </div>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <!-- SEARCH FIELD -->
+
+  <a style="color: black;" href="../vues/view_advancedResearch.php"><?php if(isset($_POST["action"])){
+                $action = "advancedSearch";}?>Advanced search</a>
+  
+  <input class="form-control form-control-dark w-50" type="text" placeholder="Faire une recherche rapide" aria-label="Search">
+
+  <!-- ACCOUNT -->
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <a class="nav-link px-3" href="#">Compte</a>
