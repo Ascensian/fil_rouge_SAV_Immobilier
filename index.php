@@ -21,6 +21,9 @@ if (isset($_POST['action'])) {
         }
     }
 }
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
 
 
 switch ($action) {
@@ -28,7 +31,7 @@ switch ($action) {
         require("vues/view_connexion.php");
         break;
     case "dashboard": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
-        require('vues/gabarit.php');
+        require('vues/view_dashboard.php');
         break;
     case "commande":
         require("../vues/view_commande.php");

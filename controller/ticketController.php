@@ -11,21 +11,22 @@ if (isset($_POST['action'])) {
     $action = $_POST['action'];
     $_SESSION["post"] = $action;
 }
-// if (isset($_POST['action'])){
-
-// }
-
-switch ($action) {
-    case "ticket":
-        require("../vues/view_ticket.php");
-        break;
-    case "article":
-        require("../vues/view_ticket.php");
-        break;
-    case "date":
-        require("../vues/view_ticket.php");
-        break;
-    case "code":
-        require("../vues/view_ticket.php");
-        break;
+if (isset($_GET['id'])) {
+    $id = $_GET["id"];
+    require("../vues/view_ticketDetail.php");
+} else {
+    switch ($action) {
+        case "ticket":
+            require("../vues/view_ticket.php");
+            break;
+        case "article":
+            require("../vues/view_ticket.php");
+            break;
+        case "date":
+            require("../vues/view_ticket.php");
+            break;
+        case "code":
+            require("../vues/view_ticket.php");
+            break;
+    }
 }

@@ -51,19 +51,14 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" id="dashboard" aria-current="page" href="../vues/view_dashboard.php">
-                <?php if (isset($_POST["action"])) {
-                  $action = "dashboard";
-                } ?>
+              <a class="nav-link active" id="dashboard" aria-current="page" href="<?php echo $_SERVER["PHP_SELF"] ?>?action=dashboard">
+
                 <span data-feather="home"></span>
                 Tableau de bord
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../vues/view_commande.php">
-                <?php if (isset($_POST["action"])) {
-                  $action = "commande";
-                } ?>
                 <span data-feather="file"></span>
                 Commandes
               </a>
