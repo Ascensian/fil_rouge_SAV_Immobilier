@@ -7,7 +7,15 @@ $titre = "Ticket";
 ob_start(); ?>
 
 <h1>Tickets SAV</h1>
-
+<div id="ticketbtn">
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="ticketSelect">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <input type="submit" value="recherche" name="action"></input>
+</div>
 <?php $ticket = ticketMgr::getAll("root", "");
 foreach ($ticket as $key => $infoticket) { ?>
     <div id="<?= $key ?>">

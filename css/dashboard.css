@@ -149,3 +149,9 @@ body {
   box-shadow: none;
 }
 
+/* CSS page ticket */
+
+#ticketSelect{
+  size: 10px;
+}
+
