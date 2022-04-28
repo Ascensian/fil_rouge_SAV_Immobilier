@@ -7,16 +7,48 @@ spl_autoload_register(function ($classe) {
 $titre = "Client";
 
 ob_start();?>
+<?php 
+$tabclt = ClientMgr::getListClient();
+?>
 
 <h1>Clients</h1>
 
 <div id="listclient">
-<?php 
-$test = ClientMgr::getListClient();
-var_dump($test);
-?>
-</div>
 
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Num Client</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Code Postal</th>
+      <th scope="col">Ville</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+
+    foreach($tabclt as $key=>$value){
+        ?><tr onclick="document.location.href='./view_article.php'">
+           <th scope="row"><?php echo $value["IdClient"]?></th>
+            <td><?php echo $value["NomClient"]?></td>
+            <td><?php echo $value["PrenomClient"]?></td>
+            <td><?php echo $value["NumClient"]?></td>
+            <td><?php echo $value["AdresseClient"]?></td>
+            <td><?php echo $value["CPClient"]?></td>
+            <td><?php echo $value["VilleClient"]?></td>
+            </a></tr>
+
+<?php
+    }
+?>
+  </tbody>
+</table>
+
+
+</div>
 
 <?php $contenu = ob_get_clean(); 
 

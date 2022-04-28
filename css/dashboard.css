@@ -12,13 +12,11 @@ body {
  * Sidebar
  */
 
-.contenu{
-  width: 90%;
-  
-}
+
+
 
 .sidebar {
-  /* position: absolute; */
+  position: fixed;
   top: 0;
   /* rtl:raw:
   right: 0;
@@ -38,7 +36,7 @@ body {
 }
 
 .sidebar-sticky {
-  position: relative;
+  position: fixed;
   top: 0;
   height: calc(100vh - 48px);
   padding-top: .5rem;
