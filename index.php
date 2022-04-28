@@ -28,12 +28,12 @@ switch ($action) {
         require("vues/view_connexion.php");
         break;
     case "dashboard": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
-        require('vues/view_dashboard.php');
+        require('vues/gabarit.php');
         break;
     case "commande":
         require("../vues/view_commande.php");
     case "ticket":
-        header("..controller/ticketController.php");
+        header("controller/ticketController.php");
     case "client":
         require("..vues/view_client.php");
     case "article":

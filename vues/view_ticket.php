@@ -5,16 +5,25 @@ spl_autoload_register(function ($classe) {
 $titre = "Ticket";
 
 ob_start(); ?>
-
+<?php var_dump($_SESSION);
+echo $action;
+var_dump($_POST);
+echo $_SERVER['PHP_SELF'];
+?>
 <h1>Tickets SAV</h1>
 <div id="ticketbtn">
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="ticketSelect">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <input type="submit" value="recherche" name="action"></input>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <input type="hidden" name="action" value="article">
+        <input type="submit" value="Rechercher">
+    </form>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <input type="hidden" name="action" value="date">
+        <input type="submit" value="Rechercher">
+    </form>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <input type="hidden" name="action" value="code">
+        <input type="submit" value="Rechercher">
+    </form>
 </div>
 <?php $ticket = ticketMgr::getAll("root", "");
 foreach ($ticket as $key => $infoticket) { ?>
@@ -24,7 +33,7 @@ foreach ($ticket as $key => $infoticket) { ?>
         <p>Date de création du ticket : <?= $infoticket["DateTicketSAV"] ?></p>
         <p>Numéro de Commande : <?= $infoticket["IdCommande"] ?></p>
         <p>Article concerné : <?= $infoticket["IdTicketSAV"] ?></p>
-        <!-- <p>Commentaire du ticket : <?= $infoticket["CommentaireTicketSAV"] ?></p> -->*
+        <!-- <p>Commentaire du ticket : <?= $infoticket["CommentaireTicketSAV"] ?></p> -->
         </a>
     </div>
 <?php }
