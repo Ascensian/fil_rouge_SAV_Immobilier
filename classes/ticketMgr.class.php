@@ -12,7 +12,7 @@ class TicketMgr
         return $tresultat;
     }
 
-    public static function getTicketsOderBy(string $user, string $password, string $table, int $typeEnregisterment = PDO::FETCH_ASSOC)
+    public static function getTicketsOrderBy(string $user, string $password, string $table, int $typeEnregisterment = PDO::FETCH_ASSOC)
     {
         $requete = "SELECT * FROM ticketsav ORDER BY " . $table;
         $resultat = Connexion::getConnexion($user, $password)->query($requete);
@@ -21,7 +21,7 @@ class TicketMgr
         return $tresultat;
     }
 
-    public static function getTicket(string $user, string $password, string $ticket, int $typeEnregisterment = PDO::FETCH_ASSOC)
+    public static function getTicketById(string $user, string $password, string $ticket, int $typeEnregisterment = PDO::FETCH_ASSOC)
     {
         $requete = 'SELECT * FROM ticketsav WHERE IdTicketSAV = "TICK0001"';
         $resultat = Connexion::getConnexion($user, $password)->query($requete);

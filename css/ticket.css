@@ -16,3 +16,15 @@ form{
 .title{
     margin-left: 1.5vh; 
 }
+
+.table{
+    width : 60vh;
+}
+th, tr{
+    text-align: center;
+
+}
+
+.table > #tableTicket{
+    width : 100vh;
+}

@@ -14,20 +14,38 @@ ob_start(); ?>
 
 ?>
 <h2 class="title">Détail du ticket</h2>
-<?php
-$ticket = ticketMgr::getTicket("root", "", $id);
-// var_dump($ticket);
-foreach ($ticket as $key => $infoticket) { ?>
-    <div id="<?= $key ?>">
+<table class="table table-bordered table-striped " id="tableTicketDetail">
+    <thead>
+        <tr class="bg-primary">
+            <th scope="col">Numéro de ticket</th>
+            <th scope="col">Date de création</th>
+            <th scope="col">Numéro de commande</th>
+            <th scope="col">Article concerné</th>
+            <th scope="col">Code lié à la commande ou à l'article </th>
+            <th scope="col">Commentaire</th>
+            <th scope="col">Employé ayant créé le ticket</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $ticket = ticketMgr::getTicketById("root", "", $id);
+        // var_dump($ticket);
+        foreach ($ticket as $key => $infoticket) { ?>
 
-        <p><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id= <?php echo $infoticket["IdTicketSAV"] ?>">Numéro de ticket : <?= $infoticket["IdTicketSAV"] ?></a></p>
-        <p>Date de création du ticket : <?= $infoticket["DateTicketSAV"] ?></p>
-        <p>Numéro de Commande : <?= $infoticket["IdCommande"] ?></p>
-        <p>Article concerné : <?= $infoticket["IdTicketSAV"] ?></p>
-        <p>Code lié à la commande ou à l'article : <?= $infoticket["CommentaireTicketSAV"] ?></p>
-        <!-- <p>Commentaire du ticket : <?= $infoticket["CommentaireTicketSAV"] ?></p> -->
-    </div>
-<?php } ?>
+            <tr>
+                <th scope="row"><?= $infoticket["IdTicketSAV"] ?></th>
+                <td><?= $infoticket["DateTicketSAV"] ?></td>
+                <td><?= $infoticket["IdCommande"] ?></td>
+                <td><?= $infoticket["IdArticle"] ?></td>
+                <td><?= $infoticket["CommentaireTicketSAV"] ?></td>
+                <td>><?= $infoticket["ProbTicketSAV"] ?></td>
+                <td><?= $infoticket["IdEmploye"] ?></td>
+            </tr>
+
+
+        <?php } ?>
+    </tbody>
+</table>
 <?php $contenu = ob_get_clean();
 
 

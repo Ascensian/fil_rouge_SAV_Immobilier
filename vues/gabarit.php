@@ -58,34 +58,26 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../vues/view_commande.php">
+              <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] ?>?action=commande">
                 <span data-feather="file"></span>
                 Commandes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../controller/ticketcontroller.php">
-                <?php if (isset($_POST["action"])) {
-                  $action = "ticket";
-                } ?>
+              <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] ?>?action=ticket">
                 <span data-feather="shopping-cart"></span>
                 Ticket SAV
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../vues/view_client.php">
-                <?php if (isset($_POST["action"])) {
-                  $action = "client";
-                } ?>
+              <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] ?>?action=client">
+
                 <span data-feather="users"></span>
                 Client
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../vues/view_article.php">
-                <?php if (isset($_POST["action"])) {
-                  $action = "article";
-                } ?>
+              <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] ?>?action=article">
                 <span data-feather="bar-chart-2"></span>
                 Article
               </a>

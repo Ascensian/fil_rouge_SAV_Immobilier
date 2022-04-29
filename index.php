@@ -34,11 +34,15 @@ switch ($action) {
         require('vues/view_dashboard.php');
         break;
     case "commande":
-        require("../vues/view_commande.php");
+        require("vues/view_commande.php");
+        break;
     case "ticket":
-        header("controller/ticketController.php");
+        header("Refresh:0; url = controller/ticketController.php", false);
+        break;
     case "client":
-        require("..vues/view_client.php");
+        require("vues/view_client.php");
+        break;
     case "article":
-        require("..vues/view_article.php");
+        require("vues/view_article.php");
+        break;
 }
