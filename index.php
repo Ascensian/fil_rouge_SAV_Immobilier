@@ -30,6 +30,11 @@ if (isset($_POST['action'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+if (!isset($_SESSION["index"])) {
+    $_SESSION["index"] = 1;
+} else if ($_SESSION["index"] == 0) {
+    $_SESSION["index"] = 1;
+}
 
 
 switch ($action) {

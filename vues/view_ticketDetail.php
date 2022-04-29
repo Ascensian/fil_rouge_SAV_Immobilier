@@ -29,7 +29,11 @@ ob_start(); ?>
                 <th scope="row"><?= $infoticket["IdTicketSAV"] ?></th>
                 <td><?= $infoticket["DateTicketSAV"] ?></td>
                 <td><?= $infoticket["IdCommande"] ?></td>
-                <td><?= $infoticket["IdArticle"] ?></td>
+                <td><?php if ($infoticket["IdArticle"] == NULL) {
+                        echo "La commande est concernée";
+                    } else {
+                        echo $infoticket["IdArticle"];
+                    } ?></td>
                 <td><?= $infoticket["CommentaireTicketSAV"] ?></td>
                 <td>><?= $infoticket["ProbTicketSAV"] ?></td>
                 <td><?= $infoticket["IdEmploye"] ?></td>
@@ -52,6 +56,6 @@ if (empty($_SESSION['post'])) {
 <?php $contenu = ob_get_clean();
 
 
-require "../vues/gabaritcontroller.php"
+require "../vues/gabarit.php"
 
 ?>

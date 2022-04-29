@@ -72,7 +72,7 @@ ob_start(); ?>
             <?php
             foreach ($ticket as $key => $infoticket) { ?>
                 <tr>
-                    <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id= <?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
+                    <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
                     <td><?php
                         if ($action == "article") {
                             if ($infoticket["IdArticle"] == NULL) {
@@ -123,6 +123,6 @@ ob_start(); ?>
 <?php $contenu = ob_get_clean();
 
 
-require "../vues/gabaritcontroller.php"
+require "../vues/gabarit.php"
 
 ?>
