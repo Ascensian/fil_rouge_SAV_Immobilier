@@ -54,43 +54,64 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" id="dashboard" aria-current="page" href="../vues/view_dashboard.php">
-                <?php if(isset($_POST["action"])){
-                $action = "dashboard";}?>
+          <a class="nav-link active" id="dashboard" aria-current="page" 
+          href="<?php
+              if ($_SESSION["index"] == 1) {
+                echo "index.php";
+              } else {
+                echo "../index.php";
+              } ?>?action=dashboard">
               <span data-feather="home"></span>
               Tableau de bord
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../vues/view_commande.php">
-            <?php if(isset($_POST["action"])){
-                $action = "commande";}?>
+          <a class="nav-link" 
+          href="<?php
+              if ($_SESSION["index"] == 1) {
+                echo "index.php";
+              } else {
+                echo "../index.php";
+              } ?>?action=commande">
               <span data-feather="file"></span>
               Commandes
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../vues/view_ticket.php">
-            <?php if(isset($_POST["action"])){
-                $action = "ticket";}?>
+          <a class="nav-link" 
+          href="<?php
+              if ($_SESSION["index"] == 1) {
+                echo "index.php";
+              } else {
+                echo "../index.php";
+              } ?>?action=ticket">
               <span data-feather="shopping-cart"></span>
               Ticket SAV
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../vues/view_client.php">
-            <?php if(isset($_POST["action"])){
-                $action = "client";}?>
+          <a class="nav-link" 
+          href="<?php
+              if ($_SESSION["index"] == 1) {
+                echo "index.php";
+              } else {
+                echo "../index.php";
+              } ?>?action=client">
               <span data-feather="users"></span>
               Client
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../vues/view_article.php">
-            <?php if(isset($_POST["action"])){
-                $action = "article";}?>
-              <span data-feather="bar-chart-2"></span>
-              Article
+          <a class="nav-link"  
+          href="<?php     
+            if ($_SESSION["index"] == 1) {
+                echo "index.php";
+              } else {
+                echo "../index.php";
+              } 
+          ?>?action=article">
+          <span data-feather="bar-chart-2"></span>
+          Article
             </a>
           </li>
         </ul>

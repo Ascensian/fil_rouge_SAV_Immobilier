@@ -12,8 +12,14 @@ body {
  * Sidebar
  */
 
+.container-fluid{
+  margin-left: 10% !important;
+  padding-top: 2% !important;
 
-
+}
+.nav {
+  padding-top: 50%;
+}
 
 .sidebar {
   position: fixed;

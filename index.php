@@ -7,6 +7,9 @@ session_start();
 
 $action = "connexion";
 $msgErreur = "";
+if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
+    $_SESSION = array();
+}
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "dashboard") {
         try {
@@ -22,20 +25,32 @@ if (isset($_POST['action'])) {
     }
 }
 
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+if (!isset($_SESSION["index"])) {
+    $_SESSION["index"] = 1;
+} else if ($_SESSION["index"] == 0) {
+    $_SESSION["index"] = 1;
+}
 
 switch ($action) {
     case "connexion":
-        require("vues/view_connexion.php");
+        require("../vues/view_connexion.php");
         break;
     case "dashboard": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
-        require('vues/view_dashboard.php');
+        require("../fil_rouge_SAV_Immobilier/vues/view_dashboard.php");
         break;
     case "commande":
-        require("../vues/view_commande.php");
+        header("Refresh:0; url = ../controler/controlercommande.php", false);
+        break;
     case "ticket":
-        require("..vues/view_ticket.php");
+        require("../fil_rouge_SAV_Immobilier/vues/view_ticket.php");
+        break;
     case "client":
-        require("..vues/view_client.php");
+        header("Refresh:0; url = ../controler/controlerclient.php", false);
+        break;
     case "article":
-        require("..vues/view_article.php");
+        require("../fil_rouge_SAV_Immobilier/vues/view_article.php");
+        break;
 }
