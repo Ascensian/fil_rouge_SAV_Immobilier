@@ -15,33 +15,7 @@ session_start();
 
 // $ticket = ticketMgr::getAll("test", "test");
 // print_r($ticket);
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/test.css" rel="stylesheet">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="ticketbtn">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="article">
-            <input type="submit" value="Rechercher">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="date">
-            <input type="submit" value="Rechercher">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="code">
-            <input type="submit" value="Rechercher">
-        </form>
-    </div>
-</body>
-
-</html>
+$id = "TICK0003";
+$test = ticketMgr::getTicketById("root", "", $id);
+var_dump($test);

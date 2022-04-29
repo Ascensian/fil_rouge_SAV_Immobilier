@@ -18,13 +18,14 @@ form{
 }
 
 .table{
-    width : 60vh;
+    width : 50%; 
 }
+
 th, tr{
     text-align: center;
 
 }
 
-.table > #tableTicket{
-    width : 100vh;
-}
+/* .table > #tableTicket{
+    /* width : 1000vh; 
+} */

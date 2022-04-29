@@ -3,8 +3,9 @@ spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
 
-session_start();
 
+session_start();
+// var_dump($_SESSION);
 $action = "ticket";
 $msgErreur = "";
 if (isset($_POST['action'])) {
@@ -14,7 +15,7 @@ if (isset($_POST['action'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) and !isset($_POST['action'])) {
     $id = $_GET["id"];
     require("../vues/view_ticketDetail.php");
 } else {

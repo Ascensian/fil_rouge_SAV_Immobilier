@@ -5,8 +5,13 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 
+
+
 $action = "connexion";
 $msgErreur = "";
+if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
+    $_SESSION = array();
+}
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "dashboard") {
         try {
@@ -16,6 +21,7 @@ if (isset($_POST['action'])) {
             $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
             $_SESSION["role"] = $compte[0]["RoleEmploye"];
             $action = $_POST['action'];
+            var_dump($_SESSION);
         } catch (ConnexionMgrException $e) {
             $msgErreur = $e->getMessage();
         }

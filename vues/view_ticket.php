@@ -2,6 +2,7 @@
 spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
+require "../classes/appelTicketMgr.php";
 $titre = "Ticket";
 
 ob_start(); ?>
@@ -16,66 +17,34 @@ ob_start(); ?>
 
 <h2 class="title">Trier par type</h2>
 <div id="ticketbtn">
-    <?php if (!isset($_POST['action']) || $_POST['action'] == "ticket") {
-
-    ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="article">
-            <input type="submit" value="article">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="date">
-            <input type="submit" value="date">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="code">
-            <input type="submit" value="code">
-        </form>
-    <?php } else if ($_POST['action'] == "article") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+    <?php if ($action != "ticket") {
+    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <input type="hidden" name="action" value="ticket">
-            <input type="submit" value="ticket">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="date">
-            <input type="submit" value="date">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="code">
-            <input type="submit" value="code">
-        </form>
-    <?php } else if ($_POST['action'] == "date") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="ticket">
-            <input type="submit" value="ticket">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="article">
-            <input type="submit" value="article">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="code">
-            <input type="submit" value="code">
-        </form>
-    <?php } else if ($_POST['action'] == "code") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="ticket">
-            <input type="submit" value="ticket">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="article">
-            <input type="submit" value="article">
-        </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="date">
-            <input type="submit" value="date">
+            <input class="btn btn-primary" type="submit" value="ticket">
         </form>
     <?php }
-    ?>
+    if ($action != "article") { ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="article">
+            <input class="btn btn-primary" type="submit" value="article">
+        </form>
+    <?php }
+    if ($action != "date") { ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="date">
+            <input class="btn btn-primary" type="submit" value="date">
+        </form>
+    <?php }
+    if ($action != "code") { ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="code">
+            <input class="btn btn-primary" type="submit" value="code">
+        </form>
+    <?php } ?>
 </div>
 <h2 class="title">Tickets SAV</h2>
-<?php if (!isset($_POST['action']) || $_POST['action'] == "ticket") {
-    $ticket = ticketMgr::getAllTickets("root", "");
+<?php if ($action == "ticket") {
+    $ticket = getTickets();
 ?>
     <table class="table table-bordered table-striped " id="tableTicket">
         <thead>
@@ -106,7 +75,7 @@ ob_start(); ?>
         </tbody>
     </table>
 <?php
-} else if ($_POST['action'] == "article") {
+} else if ($action == "article") {
     $ticket = ticketMgr::getTicketsOrderBy("root", "", "IdArticle");
 ?>
     <table class="table table-bordered table-striped " id="tableTicketDetail">
@@ -132,7 +101,7 @@ ob_start(); ?>
         </tbody>
     </table>
 <?php
-} else if ($_POST['action'] == "date") {
+} else if ($action == "date") {
     $ticket = ticketMgr::getTicketsOrderBy("root", "", "DateTicketSAV");
 ?>
 
@@ -157,7 +126,7 @@ ob_start(); ?>
         </tbody>
     </table>
 <?php
-} else if ($_POST['action'] == "code") { ?>
+} else if ($action == "code") { ?>
     <table class="table table-bordered table-striped table-hover" id="tableTicketCode">
         <thead>
             <tr class="bg-primary">
@@ -187,6 +156,6 @@ ob_start(); ?>
 <?php $contenu = ob_get_clean();
 
 
-require "../vues/gabarit.php"
+require "../vues/gabaritcontroller.php"
 
 ?>

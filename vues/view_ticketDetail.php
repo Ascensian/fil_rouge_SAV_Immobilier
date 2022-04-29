@@ -2,17 +2,11 @@
 spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
+require "../classes/appelTicketMgr.php";
 $titre = "Ticket";
 
 ob_start(); ?>
-<?php
-// var_dump($_SESSION);
-// echo $action;
-// var_dump($_POST);
-// var_dump($_GET);
-// echo $_SERVER['PHP_SELF'];
 
-?>
 <h2 class="title">Détail du ticket</h2>
 <table class="table table-bordered table-striped " id="tableTicketDetail">
     <thead>
@@ -28,8 +22,7 @@ ob_start(); ?>
     </thead>
     <tbody>
         <?php
-        $ticket = ticketMgr::getTicketById("root", "", $id);
-        // var_dump($ticket);
+        $ticket = getTicket($id);
         foreach ($ticket as $key => $infoticket) { ?>
 
             <tr>
@@ -46,9 +39,19 @@ ob_start(); ?>
         <?php } ?>
     </tbody>
 </table>
+
+<a href="ticketController.php?action=
+<?php
+if (empty($_SESSION['post'])) {
+    echo "ticket";
+} else {
+    echo $_SESSION['post'];
+}
+?>">Retour à la page précédente</a>
+<br>
 <?php $contenu = ob_get_clean();
 
 
-require "../vues/gabarit.php"
+require "../vues/gabaritcontroller.php"
 
 ?>

@@ -23,10 +23,9 @@ class TicketMgr
 
     public static function getTicketById(string $user, string $password, string $ticket, int $typeEnregisterment = PDO::FETCH_ASSOC)
     {
-        $requete = 'SELECT * FROM ticketsav WHERE IdTicketSAV = "TICK0001"';
+        $requete = 'SELECT * FROM ticketsav WHERE IdTicketSAV = "' . $ticket . '"';
         $resultat = Connexion::getConnexion($user, $password)->query($requete);
         $tresultat = $resultat->fetchAll($typeEnregisterment);
-
         return $tresultat;
     }
 }
