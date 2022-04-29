@@ -15,33 +15,8 @@ ob_start(); ?>
 
 ?>
 
-<h2 class="title">Trier par type</h2>
-<div id="ticketbtn">
-    <?php if ($action != "ticket") {
-    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="ticket">
-            <input class="btn btn-primary" type="submit" value="ticket">
-        </form>
-    <?php }
-    if ($action != "article") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="article">
-            <input class="btn btn-primary" type="submit" value="article">
-        </form>
-    <?php }
-    if ($action != "date") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="date">
-            <input class="btn btn-primary" type="submit" value="date">
-        </form>
-    <?php }
-    if ($action != "code") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <input type="hidden" name="action" value="code">
-            <input class="btn btn-primary" type="submit" value="code">
-        </form>
-    <?php } ?>
-</div>
+
+
 <h2 class="title">Tickets SAV</h2>
 <?php if ($action == "ticket") {
     $ticket = getTickets();
@@ -75,14 +50,22 @@ ob_start(); ?>
         </tbody>
     </table>
 <?php
-} else if ($action == "article") {
-    $ticket = ticketMgr::getTicketsOrderBy("root", "", "IdArticle");
+} else {
+    $ticket = getTickets($action);
 ?>
     <table class="table table-bordered table-striped " id="tableTicketDetail">
         <thead>
             <tr class="bg-primary">
                 <th scope="col">Numéro de ticket</th>
-                <th scope="col">Article concerné</th>
+                <th scope="col">
+                    <?php if ($action == "article") {
+                        echo "Article concernée";
+                    } else if ($action == "date") {
+                        echo "Date de création du ticket";
+                    } else {
+                        echo "Code lié à la commande ou à l'article";
+                    }
+                    ?></th>
             </tr>
         </thead>
         <tbody>
@@ -91,66 +74,50 @@ ob_start(); ?>
                 <tr>
                     <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id= <?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
                     <td><?php
-                        if ($infoticket["IdArticle"] == NULL) {
-                            echo "La commande est concernée";
+                        if ($action == "article") {
+                            if ($infoticket["IdArticle"] == NULL) {
+                                echo "La commande est concernée";
+                            } else {
+                                echo $infoticket["IdArticle"];
+                            }
+                        } else if ($action == "date") {
+                            echo $infoticket["DateTicketSAV"];
                         } else {
-                            echo $infoticket["IdArticle"];
-                        } ?></td>
+                            echo $infoticket["CommentaireTicketSAV"];
+                        }
+                        ?></td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-<?php
-} else if ($action == "date") {
-    $ticket = ticketMgr::getTicketsOrderBy("root", "", "DateTicketSAV");
-?>
-
-    <table class="table table-bordered table-striped " id="tableTicketDetail">
-        <thead>
-            <tr class="bg-primary">
-                <th scope="col">Numéro de ticket</th>
-                <th scope="col">Date de création</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($ticket as $key => $infoticket) { ?>
-
-                <tr>
-                    <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id= <?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
-                    <td><?= $infoticket["DateTicketSAV"] ?></td>
-                </tr>
-
-
-            <?php } ?>
-        </tbody>
-    </table>
-<?php
-} else if ($action == "code") { ?>
-    <table class="table table-bordered table-striped table-hover" id="tableTicketCode">
-        <thead>
-            <tr class="bg-primary">
-                <th scope="col">Numéro de ticket</th>
-                <th scope="col">Code lié à la commande ou à l'article </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $ticket = ticketMgr::getTicketsOrderBy("root", "", "CommentaireTicketSAV");
-            // var_dump($ticket);
-            foreach ($ticket as $key => $infoticket) { ?>
-                <tr>
-
-                    <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id= <?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
-                    <td><?= $infoticket["CommentaireTicketSAV"] ?></td>
-
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-<?php }
-?>
+<?php } ?>
+<h2 class="title">Trier par type : <?= $action ?></h2>
+<div id="ticketbtn">
+    <?php if ($action != "ticket") {
+    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="ticket">
+            <input class="btn btn-primary" type="submit" value="ticket">
+        </form>
+    <?php }
+    if ($action != "article") { ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="article">
+            <input class="btn btn-primary" type="submit" value="article">
+        </form>
+    <?php }
+    if ($action != "date") { ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="date">
+            <input class="btn btn-primary" type="submit" value="date">
+        </form>
+    <?php }
+    if ($action != "code") { ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="action" value="code">
+            <input class="btn btn-primary" type="submit" value="code">
+        </form>
+    <?php } ?>
+</div>
 
 
 <?php $contenu = ob_get_clean();
