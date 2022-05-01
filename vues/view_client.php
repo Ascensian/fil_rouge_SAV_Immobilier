@@ -31,7 +31,7 @@ $tabclt = ClientMgr::getListClient();
     <?php
 
     foreach($tabclt as $key=>$value){
-        ?><tr onclick="document.location.href='./view_article.php'">
+        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $value['IdClient'] ?>'">
            <th scope="row"><?php echo $value["IdClient"]?></th>
             <td><?php echo $value["NomClient"]?></td>
             <td><?php echo $value["PrenomClient"]?></td>
@@ -52,6 +52,6 @@ $tabclt = ClientMgr::getListClient();
 
 <?php $contenu = ob_get_clean(); 
 
-require "../fil_rouge_SAV_Immobilier/vues/gabarit.php";
+require "../vues/gabarit.php";
 
 ?>

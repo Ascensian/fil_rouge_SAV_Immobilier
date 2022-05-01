@@ -20,10 +20,14 @@ if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-
+if (isset($_GET['id']) AND (!isset($_POST['action']))) {
+    $id = $_GET["id"];
+    require("../vues/view_details.php");
+}else{
 switch($action){
     case "commande":
         require("../vues/view_commande.php");
         break;
     }
+}
 ?>

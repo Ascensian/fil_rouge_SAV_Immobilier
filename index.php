@@ -36,7 +36,7 @@ if (!isset($_SESSION["index"])) {
 
 switch ($action) {
     case "connexion":
-        require("../vues/view_connexion.php");
+        require("../fil_rouge_SAV_Immobilier/vues/view_connexion.php");
         break;
     case "dashboard": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
         require("../fil_rouge_SAV_Immobilier/vues/view_dashboard.php");
@@ -53,4 +53,4 @@ switch ($action) {
     case "article":
         require("../fil_rouge_SAV_Immobilier/vues/view_article.php");
         break;
-}
+    }

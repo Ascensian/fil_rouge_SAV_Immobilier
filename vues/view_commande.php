@@ -15,6 +15,7 @@ $tabclt = CommandeMgr::getListCommande();
 
 <div id="listcommande">
 
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -30,13 +31,13 @@ $tabclt = CommandeMgr::getListCommande();
     <?php
 
     foreach($tabclt as $key=>$value){ 
-        ?><tr onclick="document.location.href='./view_article.php'">
+        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $value['IdCommande'] ?>'">
            <th scope="row"><?php echo $value["IdCommande"]?></th>
            <th scope="row"><?php echo $value["IdClient"]?></th>
             <td><?php echo $value["EtatCommande"]?></td>
             <td><?php echo $value["DateExpeditionCommande"]?></td>
             <td><?php echo $value["DateCommande"]?></td>
-            </a></tr>
+            </tr>
 
 <?php
     }

@@ -16,14 +16,16 @@ if (isset($_POST['action'])) {
     $action = $_POST['action'];
     $_SESSION["post"] = $action;
 }
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-}
 
 
+if (isset($_GET['id']) AND (!isset($_POST['action']))) {
+    $id = $_GET["id"];
+    require("../vues/view_details.php");
+}else{
 switch($action){
     case "client":
         require("../vues/view_client.php");
         break;
     }
+}
 ?>
