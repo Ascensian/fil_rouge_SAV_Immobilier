@@ -1,0 +1,11 @@
+.contenu{
+    width: auto; 
+  }
+  
+  table {
+      width: 300% !important;
+  }
+  
+  fieldset{
+  background-color: rgba(75, 234, 255, 0.507) !important;
+  }

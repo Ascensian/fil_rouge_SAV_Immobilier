@@ -12,6 +12,18 @@ body {
  * Sidebar
  */
 
+ .contenu{
+  width: auto; 
+}
+
+table {
+    width: 200% !important;
+}
+
+#detailclient{
+background-color: rgb(127, 219, 255) !important;
+}
+
 .container-fluid{
   margin-left: 10% !important;
   padding-top: 2% !important;
