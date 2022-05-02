@@ -1,9 +1,9 @@
 import { control_searchDisplayClient, 
-    control_searchDisplayCommande, 
-    control_searchDisplayTicket, 
-    changeDisplayClient,
-    changeDisplayCommande,
-    changeDisplayTicket } from '/Js/controlForm.js';
+         control_searchDisplayCommande, 
+         control_searchDisplayTicket, 
+         changeDisplayClient,
+         changeDisplayCommande,
+         changeDisplayTicket } from '/Js/controlForm.js';
 
 export { showOrder };
 
@@ -27,8 +27,8 @@ export { showOrder };
    
     // n'affiche la div que si le controle est à 0
     if (control_searchDisplayCommande == false) {
-        // console.log(control_searchDisplayCommande);
-        console.log("ffkfkfkfkk");
+       
+      
         var divCommande = document.createElement("div");
         divCommande.id = "divCommande";
     

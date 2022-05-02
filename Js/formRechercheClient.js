@@ -61,8 +61,6 @@ function showClient () {
 
         var clientInputSubmit = document.createElement("input");
         clientInputSubmit.type = "submit";
-        
-
 
         //met sur le DOM les éléments créés
         clientFieldset.appendChild(clientLegend);
@@ -74,10 +72,9 @@ function showClient () {
         clientFieldset.appendChild(document.createElement("br"));
         clientFieldset.appendChild(clientInputSubmit);
         clientForm.appendChild(clientFieldset);
-        
-        
         divClient.appendChild(clientForm);
         document.querySelector(".contenu").appendChild(divClient);
+
         changeDisplayClient(true);
        
     }

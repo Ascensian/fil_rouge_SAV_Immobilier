@@ -11,6 +11,7 @@ ob_start();
         <div id="client">client</div>
         <div id="order">commande</div>
         <div id="ticket">ticket</div>
+        <div id="employe">employé</div>
     </div>
 
 
