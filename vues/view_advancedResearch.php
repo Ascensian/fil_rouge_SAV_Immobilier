@@ -12,13 +12,15 @@ ob_start();
         <div id="order">commande</div>
         <div id="ticket">ticket</div>
     </div>
-    
+
 
     
 
-<script src="/Js/affichageRecherche.js"></script>
+
 
 <?php
 $contenu = ob_get_clean();
-require "../vues/gabarit.php";
+?>
+<script src="/Js/controlForm.js" type="module"></script>
+<?php require "../vues/gabarit.php"; ?>
 
