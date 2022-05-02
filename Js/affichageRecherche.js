@@ -49,6 +49,15 @@ function showClient () {
         clientFirstnameInput.name = "clientFirstName";
         clientFirstnameInput.placeholder = "ENTREZ UN NOM";
 
+        var clientName = document.createElement("label");
+        clientName.setAttribute("for", "clientName");
+        clientName.insertAdjacentHTML("afterbegin", "entrez un prenom client ");
+    
+        var clientNameInput = document.createElement("input");
+        clientNameInput.type = "text";
+        clientNameInput.name = "clientName";
+        clientNameInput.placeholder = "ENTREZ UN PRENOM";
+
         var clientInputSubmit = document.createElement("input");
         clientInputSubmit.type = "submit";
         
@@ -58,7 +67,11 @@ function showClient () {
         clientFieldset.appendChild(clientLegend);
         clientFieldset.appendChild(clientFirstname);
         clientFieldset.appendChild(clientFirstnameInput);
-        
+        clientFieldset.appendChild(document.createElement("br"));
+        clientFieldset.appendChild(clientName);
+        clientFieldset.appendChild(clientNameInput);
+        clientFieldset.appendChild(document.createElement("br"));
+        clientFieldset.appendChild(clientInputSubmit);
         clientForm.appendChild(clientFieldset);
         
         
