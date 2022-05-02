@@ -94,25 +94,25 @@ ob_start(); ?>
 <h2 class="title">Trier par type : <?= $action ?></h2>
 <div id="ticketbtn">
     <?php if ($action != "ticket") {
-    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="ticket">
             <input class="btn btn-primary" type="submit" value="ticket">
         </form>
     <?php }
     if ($action != "article") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="article">
             <input class="btn btn-primary" type="submit" value="article">
         </form>
     <?php }
     if ($action != "date") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="date">
             <input class="btn btn-primary" type="submit" value="date">
         </form>
     <?php }
     if ($action != "code") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="code">
             <input class="btn btn-primary" type="submit" value="code">
         </form>

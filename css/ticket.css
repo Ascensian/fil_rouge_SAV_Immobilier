@@ -5,7 +5,7 @@
     /* background-color : lightcoral; */
   }
   
-form{
+.btntri{
     margin-top : 2.5vh;
     margin-left: 1.5vh;
     width : 8vh;
@@ -30,6 +30,9 @@ th, tr{
     width: 35px !important;
 }
 
-/* .table > #tableTicket{
-    /* width : 1000vh; 
-} */
+/* ticket détail */
+
+form{
+    width : 20%;
+}
+
