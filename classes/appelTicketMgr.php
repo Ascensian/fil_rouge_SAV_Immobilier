@@ -3,6 +3,7 @@ spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
 
+
 function getTickets(string $action = ""): array
 {
     $table = "";
@@ -26,4 +27,11 @@ function getTicket(string $id)
     $id = trim($id);
     $ticket = ticketMgr::getTicketById("root", "", $id);
     return $ticket;
+}
+
+function getTicketHistorique(string $id)
+{
+    $id = trim($id);
+    $histo = ticketMgr::getHistoriqueById("root", "", $id);
+    return $histo;
 }

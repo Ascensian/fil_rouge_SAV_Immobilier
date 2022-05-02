@@ -35,7 +35,7 @@ ob_start(); ?>
         <tbody>
             <?php foreach ($ticket as $key => $infoticket) { ?>
                 <tr>
-                    <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id= <?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
+                    <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $infoticket["IdTicketSAV"] ?>"><?= $infoticket["IdTicketSAV"] ?></a></th>
                     <td><?= $infoticket["DateTicketSAV"] ?></td>
                     <td><?= $infoticket["IdCommande"] ?></td>
                     <td><?php

@@ -21,9 +21,17 @@ class TicketMgr
         return $tresultat;
     }
 
-    public static function getTicketById(string $user, string $password, string $ticket, int $typeEnregisterment = PDO::FETCH_ASSOC)
+    public static function getTicketById(string $user, string $password, string $id, int $typeEnregisterment = PDO::FETCH_ASSOC)
     {
-        $requete = 'SELECT * FROM ticketsav WHERE IdTicketSAV = "' . $ticket . '"';
+        $requete = 'SELECT * FROM ticketsav WHERE IdTicketSAV = "' . $id . '"';
+        $resultat = Connexion::getConnexion($user, $password)->query($requete);
+        $tresultat = $resultat->fetchAll($typeEnregisterment);
+        return $tresultat;
+    }
+
+    public static function getHistoriqueById(string $user, string $password, string $id, int $typeEnregisterment = PDO::FETCH_ASSOC)
+    {
+        $requete = 'SELECT * FROM historiqueticket WHERE IdTicketSAV = "' . $id . '"';
         $resultat = Connexion::getConnexion($user, $password)->query($requete);
         $tresultat = $resultat->fetchAll($typeEnregisterment);
         return $tresultat;

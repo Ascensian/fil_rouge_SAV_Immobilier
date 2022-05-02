@@ -43,7 +43,35 @@ ob_start(); ?>
         <?php } ?>
     </tbody>
 </table>
+<h2 class="title">Historique du ticket</h2>
+<?php $histo = getTicketHistorique($id);
+if (!empty($histo)) {
+?>
+    <table class="table table-bordered table-striped " id="tableTicketDetail">
+        <thead>
+            <tr class="bg-primary">
+                <th scope="col">Entrée dans l'historique</th>
+                <th scope="col">Date d'avancement du ticket</th>
+                <th scope="col">Commentaire sur l'avancé</th>
+                <th scope="col">Identifiant de l'employé concerné</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
 
+            foreach ($histo as $key => $infohisto) { ?>
+                <tr>
+                    <th scope="row"><?= $key ?></th>
+                    <td><?= $infohisto["DateModificationTicket"] ?></td>
+                    <td><?= $infohisto["AvancementProblemeTicket"] ?></td>
+                    <td><?= $infohisto["IdEmploye"] ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+<?php } else {
+    echo "Aucun suivi n'a été fait pour l'instant <br>";
+} ?>
 <a href="ticketController.php?action=
 <?php
 if (empty($_SESSION['post'])) {
