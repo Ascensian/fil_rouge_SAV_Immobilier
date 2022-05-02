@@ -2,7 +2,7 @@
 
 class Recherche {
     private static function rechercheClient() {
-
+        
     }
 
     private static function rechercheCommande() {
@@ -10,6 +10,6 @@ class Recherche {
     }
 
     private static function rechercheTicket () {
-        
+
     }
 }
