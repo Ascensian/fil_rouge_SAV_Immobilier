@@ -1,0 +1,9 @@
+.contenu{
+    width: 90%;  
+  }
+
+@media(min-width:768px){
+    .contenu{
+        margin-left: 20vh;
+    }
+}

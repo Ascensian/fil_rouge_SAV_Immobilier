@@ -2,13 +2,13 @@
 
 $titre = "Article";
 
-ob_start();?>
+ob_start(); ?>
 
 <h1>Articles</h1>
 
 
-<?php $contenu = ob_get_clean(); 
+<?php $contenu = ob_get_clean();
 
-require "../vues/gabarit.php"
+require "vues/gabarit.php"
 
 ?>

@@ -9,9 +9,8 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="../css/ticket.css" rel="stylesheet">
-  <link href="../css/dashboard2.css" rel="stylesheet">
   <link href="../css/dashboard.css" rel="stylesheet">
+  <link href="../css/ticket.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,58 +51,33 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" id="dashboard" aria-current="page" href="<?php
-                                                                                  if ($_SESSION["index"] == 1) {
-                                                                                    echo "index.php";
-                                                                                  } else {
-                                                                                    echo "../index.php";
-                                                                                  } ?>?action=dashboard">
+              <a class="nav-link active" id="dashboard" aria-current="page" href="../index.php?action=dashboard">
 
                 <span data-feather="home"></span>
                 Tableau de bord
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php
-                                        if ($_SESSION["index"] == 1) {
-                                          echo "index.php";
-                                        } else {
-                                          echo "../index.php";
-                                        } ?>?action=commande">
+              <a class="nav-link" href="../index.php?action=commande">
                 <span data-feather="file"></span>
                 Commandes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php
-                                        if ($_SESSION["index"] == 1) {
-                                          echo "index.php";
-                                        } else {
-                                          echo "../index.php";
-                                        } ?>?action=ticket">
+              <a class="nav-link" href="../index.php?action=ticket">
                 <span data-feather="shopping-cart"></span>
                 Ticket SAV
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php
-                                        if ($_SESSION["index"] == 1) {
-                                          echo "index.php";
-                                        } else {
-                                          echo "../index.php";
-                                        } ?>?action=client">
+              <a class="nav-link" href="../index.php?action=client">
 
                 <span data-feather="users"></span>
                 Client
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php
-                                        if ($_SESSION["index"] == 1) {
-                                          echo "index.php";
-                                        } else {
-                                          echo "../index.php";
-                                        } ?>?action=article">
+              <a class="nav-link" href="../index.php?action=article">
                 <span data-feather="bar-chart-2"></span>
                 Article
               </a>
