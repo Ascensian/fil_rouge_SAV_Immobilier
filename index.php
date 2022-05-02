@@ -40,14 +40,5 @@ switch ($action) {
         require("..vues/view_article.php");
     case "advancedResearch":
         require("..vues/view_advancedResearch.php");
-    case "articleRecherche" :
-        require("./vues/recherche/articleRecherche.php");
-    case "clientRecherche" :
-        require("./vues/recherche/clientRecherche.php");
-    case "commandeRecherche" :
-        require("./vues/recherche/commandeRecherche.php");
-    case "garantieRecherche" :
-        require("./vues/recherche/garantieRecherche.php");
-    case "ticketRecherche" :
-        require("./vues/recherche/ticketRecherche.php");
+ 
 }
