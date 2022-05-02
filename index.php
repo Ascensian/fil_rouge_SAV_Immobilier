@@ -21,7 +21,7 @@ if (isset($_POST['action'])) {
             $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
             $_SESSION["role"] = $compte[0]["RoleEmploye"];
             $action = $_POST['action'];
-            var_dump($_SESSION);
+            // var_dump($_SESSION);
         } catch (ConnexionMgrException $e) {
             $msgErreur = $e->getMessage();
         }

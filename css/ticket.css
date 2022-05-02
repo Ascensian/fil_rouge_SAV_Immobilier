@@ -26,6 +26,10 @@ th, tr{
 
 }
 
+#btnselect{
+    width: 35px !important;
+}
+
 /* .table > #tableTicket{
     /* width : 1000vh; 
 } */
