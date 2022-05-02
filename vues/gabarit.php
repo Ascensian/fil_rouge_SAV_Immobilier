@@ -9,16 +9,19 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="../css/ticket.css" rel="stylesheet">
-  <link href="../css/dashboard2.css" rel="stylesheet">
-  <link href="../css/dashboard.css" rel="stylesheet">
+  <?php echo '<link href="../css/ticket.css" rel="stylesheet">';
+  echo '<link href="../css/dashboard.css" rel="stylesheet">';
+  ?>
+
+
 </head>
 
 <body>
+
   <balise id="hautDePage"></balise>
   <!-- NAVBAR  -->
 
-  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <img src="../images/Menuiz Man.png" id="img1" alt="">
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
