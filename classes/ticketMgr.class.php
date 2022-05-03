@@ -36,4 +36,12 @@ class TicketMgr
         $tresultat = $resultat->fetchAll($typeEnregisterment);
         return $tresultat;
     }
+
+    public static function insertHistoTicket(string $user, string $password, string $idTicket, string $com, string $idEmploye)
+    {
+        $requete = 'INSERT INTO `historiqueticket`(`IdHistoriqueTicket`, `DateModificationTicket`, `AvancementProblemeTicket`, `IdEmploye`, `IdTicketSAV`) VALUES (0 , CURRENT_DATE() , "' . $com . '" , "' . $idEmploye . '" , "' . $idTicket . '")';
+        echo $requete;
+        Connexion::getConnexion($user, $password)->query($requete);
+        return self::getHistoriqueById($user, $password, $idTicket);
+    }
 }

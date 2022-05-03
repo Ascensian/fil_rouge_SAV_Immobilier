@@ -14,6 +14,11 @@ if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 }
 if (isset($_POST['action'])) {
+    if ($_POST['action'] == "formulairehistoval") {
+        $histo = ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
+        var_dump($histo);
+        $_POST["action"] = "ticket";
+    }
     $action = $_POST['action'];
     $_SESSION["post"] = $action;
 }
