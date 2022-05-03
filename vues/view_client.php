@@ -7,11 +7,9 @@ spl_autoload_register(function ($classe) {
 $titre = "Client";
 
 ob_start();?>
-<?php 
-$tabclt = ClientMgr::getListClient();
-?>
 
-<h1>Clients</h1>
+
+<h1 id="titre">Clients</h1>
 
 <div id="listclient">
 

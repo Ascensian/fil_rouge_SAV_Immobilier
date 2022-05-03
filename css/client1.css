@@ -1,11 +1,74 @@
 .contenu{
     width: auto; 
+    margin-left: 11%;
+    margin-right: 1%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
   }
   
+#tabcom{
+    width: auto !important;
+    height: auto !important;
+}
+  
+
   table {
       width: 300% !important;
   }
   
+#titre{
+    margin-left: 11%;
+}
+
+form{
+    height: 150%;
+}
+
   fieldset{
-  background-color: rgba(75, 234, 255, 0.507) !important;
+  padding: 3%;
+  margin-top: 5%;
+  width: 150%;
   }
+
+  hr{
+    width: 160%;
+  }
+
+#fixe{
+    position: fixed;
+}
+
+  #grandediv{
+      border: solid black 1px;
+      border-radius: 20px 0px 0px 20px;
+      background-color: rgba(170, 234, 253, 0.945);
+      display: grid;
+      width: 100%;
+      grid-area: 1 / 1 / 4 / 4;
+  }
+
+  #petitediv1{
+      border: solid black 1px;
+      display: grid;
+      grid-area: 1 / 4 / 2 / 5; 
+      width: 100%;
+      overflow : auto;
+  }
+
+  #petitediv2{
+      background-color: crimson;
+      display: grid;
+      grid-area: 2 / 4 / 3 / 5;
+      width: 100%;
+  }
+
+  #petitediv3{
+      background-color: darkorange;
+      display: grid;
+      grid-area: 3 / 4 / 4 / 5;
+      width: 100%;
+  }
+  

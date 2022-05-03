@@ -26,6 +26,7 @@ if (isset($_GET['id']) AND (!isset($_POST['action']))) {
 }else{
 switch($action){
     case "commande":
+        $tabclt = CommandeMgr::getListCommande();
         require("../vues/view_commande.php");
         break;
     }
