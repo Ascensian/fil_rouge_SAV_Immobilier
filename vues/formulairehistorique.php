@@ -9,7 +9,7 @@ ob_start();
 var_dump($_SESSION);
 ?>
 <h2>Avancement du ticket : " <?= $_SESSION["idticket"]; ?></h2>
-<form action="" method="post">
+<form action="ticketcontroller.php?action=formulairehistoval" method="post" class="histoval">
     <div class="form-floating mb-3">
         <input type="text" class="form-control" name="idticket" id="id" value="<?= $_SESSION["idticket"]; ?>" disabled>
         <label for="id">Numéro du ticket</label>
@@ -19,15 +19,22 @@ var_dump($_SESSION);
         <label for="commentaire">Commentaire sur l'avancée</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="Avancement" id="avancement">
+        <input type="text" class="form-control" name="Avancement" id="avancementcode">
         <label for="avancement">code de fin du ticket</label>
-        <p> Laisser le code de fin vide si le ticket n'est pas terminé ou mettre TRM pour indiquer qu'il est terminé</p>
+        <p id="textehistocode"> Laisser le code de fin vide si le ticket n'est pas terminé ou mettre TRM pour indiquer qu'il est terminé</p>
     </div>
     <!-- <div class="form-floating mb-3">
         <input type="text" class="form-control" name="" id="" >
         <label for=""></label>
     </div> -->
+    <input type="submit" value="Valider" class="btn btn-success">
+
 </form>
+<br>
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $_SESSION["idticket"] ?>" method="post" class="histoval">
+    <input type="submit" value="annuler" class="btn btn-danger">
+</form>
+<br>
 
 <?php $contenu = ob_get_clean();
 

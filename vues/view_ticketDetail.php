@@ -9,7 +9,7 @@ ob_start();
 $ticket = getTicket($id);
 $histo = getTicketHistorique($id);
 $_SESSION["idticket"] = $ticket[0]["IdTicketSAV"];
-var_dump($_SESSION);
+// var_dump($_SESSION);
 ?>
 
 <h2 class="title">Détail du ticket</h2>

@@ -36,3 +36,6 @@ form{
     width : 20%;
 }
 
+#textehistocode{
+    visibility : hidden; 
+}
