@@ -21,8 +21,9 @@ function showClient () {
     
     if (document.body.contains(document.querySelector("#divCommande"))) {
         document.querySelector("#divCommande").remove();
+    } else if (document.body.contains(document.querySelector("#divTicket"))) {
+        document.querySelector("#divTicket").remove();
     }
-    
     // Controle pour éviter de recréer des inputs à chaque clic
     if (control_searchDisplayClient == false) {
         
@@ -38,21 +39,11 @@ function showClient () {
         var clientFieldset = document.createElement("fieldset");
         var clientLegend = document.createElement("legend");
         clientLegend.id = "clientLegend";
-        clientLegend.insertAdjacentHTML("afterbegin", "saisir nom ou prénom");
-        
-    
-        var clientFirstname = document.createElement("label");
-        clientFirstname.setAttribute("for", "clientFirstname");
-        clientFirstname.insertAdjacentHTML("afterbegin", "entrez un nom client ");
-    
-        var clientFirstnameInput = document.createElement("input");
-        clientFirstnameInput.type = "text";
-        clientFirstnameInput.name = "clientFirstName";
-        clientFirstnameInput.placeholder = "Ex : Ron";
+        clientLegend.insertAdjacentHTML("afterbegin", "saisir nom");
 
         var clientName = document.createElement("label");
         clientName.setAttribute("for", "clientName");
-        clientName.insertAdjacentHTML("afterbegin", "entrez un prenom client ");
+        clientName.insertAdjacentHTML("afterbegin", "entrez un nom client ");
     
         var clientNameInput = document.createElement("input");
         clientNameInput.type = "text";
@@ -64,12 +55,8 @@ function showClient () {
 
         //met sur le DOM les éléments créés
         clientFieldset.appendChild(clientLegend);
-        clientFieldset.appendChild(clientFirstname);
-        clientFieldset.appendChild(clientFirstnameInput);
-        clientFieldset.appendChild(document.createElement("br"));
         clientFieldset.appendChild(clientName);
         clientFieldset.appendChild(clientNameInput);
-        clientFieldset.appendChild(document.createElement("br"));
         clientFieldset.appendChild(clientInputSubmit);
         clientForm.appendChild(clientFieldset);
         divClient.appendChild(clientForm);

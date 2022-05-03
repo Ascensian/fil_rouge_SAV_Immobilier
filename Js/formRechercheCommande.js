@@ -23,6 +23,8 @@ export { showOrder };
     // supprime la div en cours si elle existe
     if (document.body.contains(document.querySelector("#divClient"))) {
         document.querySelector("#divClient").remove();
+    } else if (document.body.contains(document.querySelector("#divTicket"))) {
+        document.querySelector("#divTicket").remove();
     }
    
     // n'affiche la div que si le controle est à 0
