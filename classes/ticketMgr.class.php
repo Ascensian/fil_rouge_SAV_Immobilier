@@ -40,8 +40,14 @@ class TicketMgr
     public static function insertHistoTicket(string $user, string $password, string $idTicket, string $com, string $idEmploye)
     {
         $requete = 'INSERT INTO `historiqueticket`(`IdHistoriqueTicket`, `DateModificationTicket`, `AvancementProblemeTicket`, `IdEmploye`, `IdTicketSAV`) VALUES (0 , CURRENT_DATE() , "' . $com . '" , "' . $idEmploye . '" , "' . $idTicket . '")';
-        echo $requete;
+        //echo $requete;
         Connexion::getConnexion($user, $password)->query($requete);
         return self::getHistoriqueById($user, $password, $idTicket);
+    }
+
+    public static function updateEtatTicket(string $user, string $password, string $idTicket, string $code)
+    {
+        $requete = 'UPDATE `ticketsav` SET `CommentaireTicketSAV`="' . strtoupper($code) . '" WHERE IdTicketSAV = "' . $idTicket . '"';
+        Connexion::getConnexion($user, $password)->query($requete);
     }
 }

@@ -66,7 +66,7 @@ if (!empty($histo)) {
 
             foreach ($histo as $key => $infohisto) { ?>
                 <tr>
-                    <th scope="row"><?= $key ?></th>
+                    <th scope="row"><?= $key + 1 ?></th>
                     <td><?= $infohisto["DateModificationTicket"] ?></td>
                     <td><?= $infohisto["AvancementProblemeTicket"] ?></td>
                     <td><?= $infohisto["IdEmploye"] ?></td>

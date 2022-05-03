@@ -6,7 +6,7 @@ spl_autoload_register(function ($classe) {
 $titre = "Avancement du ticket : " . $_SESSION["idticket"];
 
 ob_start();
-var_dump($_SESSION);
+
 ?>
 <h2>Avancement du ticket : " <?= $_SESSION["idticket"]; ?></h2>
 <form action="ticketcontroller.php" method="post" class="histoval">
@@ -19,7 +19,7 @@ var_dump($_SESSION);
         <label for="commentaire">Commentaire sur l'avancée</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="Avancement" id="avancementcode">
+        <input type="text" class="form-control" name="avancement" id="avancementcode">
         <label for="avancement">code de fin du ticket</label>
         <div id="textehistocode"> Laisser le code de fin vide si le ticket n'est pas terminé ou mettre TRM pour indiquer qu'il est terminé</div>
     </div>

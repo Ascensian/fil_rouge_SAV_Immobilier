@@ -15,8 +15,10 @@ if (!isset($_SESSION["index"])) {
 }
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "formulairehistoval") {
-        $histo = ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
-        var_dump($histo);
+        ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
+        if (strtoupper($_POST["avancement"]) == "TRM") {
+            ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
+        }
         $_POST["action"] = "ticket";
     }
     $action = $_POST['action'];
