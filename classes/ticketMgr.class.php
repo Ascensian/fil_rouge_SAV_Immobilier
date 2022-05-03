@@ -50,4 +50,22 @@ class TicketMgr
         $requete = 'UPDATE `ticketsav` SET `CommentaireTicketSAV`="' . strtoupper($code) . '" WHERE IdTicketSAV = "' . $idTicket . '"';
         Connexion::getConnexion($user, $password)->query($requete);
     }
+
+    public static function getCountClientByNom(string $user, string $password, string $nomClient, int $typeEnregisterment = PDO::FETCH_ASSOC)
+    {
+        $nomClient = trim($nomClient);
+        $requete = 'SELECT COUNT(NomClient) FROM client WHERE NomClient LIKE "%' . $nomClient . '%"';
+        $resultat = Connexion::getConnexion($user, $password)->query($requete);
+        $tresultat = $resultat->fetchAll($typeEnregisterment);
+        return $tresultat;
+    }
+
+    public static function getClientByNom(string $user, string $password, string $nomClient, int $typeEnregisterment = PDO::FETCH_ASSOC)
+    {
+        $nomClient = trim($nomClient);
+        $requete = 'SELECT * FROM client WHERE NomClient LIKE "%' . $nomClient . '%"';
+        $resultat = Connexion::getConnexion($user, $password)->query($requete);
+        $tresultat = $resultat->fetchAll($typeEnregisterment);
+        return $tresultat;
+    }
 }

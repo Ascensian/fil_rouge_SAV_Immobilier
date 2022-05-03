@@ -47,5 +47,8 @@ if (isset($_GET['id']) and !isset($_POST['action'])) {
         case "formulairehistorique":
             require("../vues/formulairehistorique.php");
             break;
+        case "formulaireNVTicket":
+            require("../vues/view_nouveauTicket.php");
+            break;
     }
 }

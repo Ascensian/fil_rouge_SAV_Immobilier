@@ -5,8 +5,7 @@ spl_autoload_register(function ($classe) {
 require "../classes/appelTicketMgr.php";
 $titre = "Ticket";
 
-ob_start(); ?>
-<?php
+ob_start();
 // var_dump($_SESSION);
 // echo $action;
 // var_dump($_POST);
@@ -18,6 +17,12 @@ ob_start(); ?>
 
 
 <h2 class="title">Tickets SAV</h2>
+<br>
+<form action="ticketController.php" method="post">
+    <input type="hidden" name="action" value="formulaireNVTicket">
+    <input type="submit" class="btn btn-success" value="Nouveau ticket">
+</form>
+<br>
 <?php if ($action == "ticket") {
     $ticket = getTickets();
 ?>
