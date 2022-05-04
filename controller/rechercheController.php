@@ -14,7 +14,10 @@ if (!isset($_SESSION["index"])) {
 } else if ($_SESSION["index"] == 1) {
     $_SESSION["index"] = 0;
 }
-
+if (isset($_GET["libTicket"])) {
+    $ticket = rechercheMGR::rechercheLibTicket($_GET["libTicket"]);
+var_dump($ticket);
+}
 
 
 switch ($action) {
@@ -23,7 +26,7 @@ switch ($action) {
         break;
   case "libTicket":
     if (isset($_GET["libTicket"])) {
-        $ticket = rechercheMGR::rechercheLibTicket($_GET["libTicket"]);
+       
         var_dump($ticket);
         require("../vues/view_ticket.php");
     } 

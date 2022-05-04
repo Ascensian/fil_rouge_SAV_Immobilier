@@ -32,7 +32,7 @@ if (control_searchDisplayTicket == false) {
 
    var ticketForm = document.createElement("form");
    ticketForm.id = "formTicket";
-   ticketForm.action = "../controller/rechercheController.php";
+   ticketForm.action = "../controller/ticketController.php";
    ticketForm.method = "GET";
 
    var ticketFieldset = document.createElement("fieldset");
