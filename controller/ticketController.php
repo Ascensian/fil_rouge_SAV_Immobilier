@@ -71,9 +71,6 @@ switch ($action) {
         require("../vues/view_ticketDetail.php");
         break;
     case "formulairehistoval":
-        $ticketfini = ticketMgr::getTicketFini("root", "", $_SESSION["getId"]);
-        $histo = ticketMgr::getHistoriqueById("root", "", $_SESSION["getId"]);
-        $ticket = ticketMgr::getTicketById("root", "", $_SESSION["getId"]);
         try {
             $commentaire = trim($_POST["commentaire"]);
             if (strlen($commentaire) > 2) {
@@ -81,13 +78,13 @@ switch ($action) {
             } else {
                 throw new Exception("Erreur : Le commentaire doit être rempli");
             }
-            if (strtoupper($_POST["avancement"]) != "") {
-                ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
+            if (isset($_POST['code'])) {
+                ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["code"]);
             }
-            require("../vues/view_ticketDetail.php");
+            header("Refresh:0; url = ticketController.php?action=detailsTicket", false);
         } catch (Exception $e) {
             $msgErreur = $e->getMessage();
-            require("../vues/formulairehistorique.php");
+            header("Refresh:0; url = ticketController.php?action=formulairehistorique", false);
         }
         break;
 }

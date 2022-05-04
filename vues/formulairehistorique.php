@@ -21,20 +21,13 @@ ob_start();
         <input type="text" class="form-control" name="commentaire" id="commentaire" maxlength="50">
         <label for="commentaire">Commentaire sur l'avancée</label>
     </div>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="avancement" id="avancementcode" maxlength="4">
-        <label for="avancement">code de fin du ticket</label>
-        <div id="textehistocode">
-            <p>Code pour update :</p>
-            <p>TRM : Ticket Terminé </p>
-            <p>SAV : Service Après-vente</p>
-            <p>NPAI : N'habite Pas l'Adresse Indiqué</p>
-            <p>NP : Non présent lors de la livraison</p>
-            <p>EC : Erreur Client lors de la commmande</p>
-            <p>EP : Erreur Préparation</p>
-
-        </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="TRM" id="flexCheckChecked" name="code">
+        <label class="form-check-label" for="flexCheckChecked">
+            Ticket terminé
+        </label>
     </div>
+    <br>
     <!-- <div class="form-floating mb-3">
         <input type="text" class="form-control" name="" id="" >
         <label for=""></label>
