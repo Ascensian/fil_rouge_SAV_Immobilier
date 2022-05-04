@@ -2,10 +2,12 @@
 spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
-require "../classes/appelTicketMgr.php";
+
 $titre = "Ticket";
 
-ob_start(); ?>
+ob_start();
+
+?>
 
 <h2 class="title">Détail du ticket</h2>
 <table class="table table-bordered table-striped " id="tableTicketDetail">
@@ -22,7 +24,7 @@ ob_start(); ?>
     </thead>
     <tbody>
         <?php
-        $ticket = getTicket($id);
+
         foreach ($ticket as $key => $infoticket) { ?>
 
             <tr>
@@ -44,7 +46,7 @@ ob_start(); ?>
     </tbody>
 </table>
 <h2 class="title">Historique du ticket</h2>
-<?php $histo = getTicketHistorique($id);
+<?php
 if (!empty($histo)) {
 ?>
     <table class="table table-bordered table-striped " id="tableTicketDetail">
@@ -61,7 +63,7 @@ if (!empty($histo)) {
 
             foreach ($histo as $key => $infohisto) { ?>
                 <tr>
-                    <th scope="row"><?= $key ?></th>
+                    <th scope="row"><?= $key + 1 ?></th>
                     <td><?= $infohisto["DateModificationTicket"] ?></td>
                     <td><?= $infohisto["AvancementProblemeTicket"] ?></td>
                     <td><?= $infohisto["IdEmploye"] ?></td>
@@ -70,8 +72,15 @@ if (!empty($histo)) {
         </tbody>
     </table>
 <?php } else {
-    echo "Aucun suivi n'a été fait pour l'instant <br>";
-} ?>
+    echo "Aucun suivi n'a été fait pour l'instant <br><br>";
+}
+if ($ticketfini[0]["CommentaireTicketSAV"] != "TRM") {
+?>
+    <form action="ticketController.php?action=formulairehistorique" method="post">
+        <input class="btn btn-primary" type="submit" value="Ajouter un avancement dans le ticket">
+    </form>
+    <br>
+<?php } ?>
 <a href="ticketController.php?action=
 <?php
 if (empty($_SESSION['post'])) {

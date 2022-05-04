@@ -2,11 +2,10 @@
 spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
-require "../classes/appelTicketMgr.php";
+
 $titre = "Ticket";
 
-ob_start(); ?>
-<?php
+ob_start();
 // var_dump($_SESSION);
 // echo $action;
 // var_dump($_POST);
@@ -16,10 +15,16 @@ ob_start(); ?>
 ?>
 
 
-
+<br>
 <h2 class="title">Tickets SAV</h2>
-<?php if ($action == "ticket") {
-    $ticket = getTickets();
+<!-- <br>
+<form action="ticketController.php" method="post">
+    <input type="hidden" name="action" value="formulaireNVTicket">
+    <input type="submit" class="btn btn-success" value="Nouveau ticket">
+</form> -->
+<br>
+<?php if ($action == "ticket" or isset($_GET["libTicket"])) {
+
 ?>
     <table class="table table-bordered table-striped " id="tableTicket">
         <thead>
@@ -51,7 +56,7 @@ ob_start(); ?>
     </table>
 <?php
 } else {
-    $ticket = getTickets($action);
+    // $ticket = getTickets($action);
 ?>
     <table class="table table-bordered table-striped " id="tableTicketDetail">
         <thead>
@@ -94,25 +99,25 @@ ob_start(); ?>
 <h2 class="title">Trier par type : <?= $action ?></h2>
 <div id="ticketbtn">
     <?php if ($action != "ticket") {
-    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+    ?><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="ticket">
             <input class="btn btn-primary" type="submit" value="ticket">
         </form>
     <?php }
     if ($action != "article") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="article">
             <input class="btn btn-primary" type="submit" value="article">
         </form>
     <?php }
     if ($action != "date") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="date">
             <input class="btn btn-primary" type="submit" value="date">
         </form>
     <?php }
     if ($action != "code") { ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="btntri">
             <input type="hidden" name="action" value="code">
             <input class="btn btn-primary" type="submit" value="code">
         </form>
