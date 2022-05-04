@@ -6,7 +6,7 @@ spl_autoload_register(function ($classe) {
 $titre = "Ticket";
 
 ob_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 ?>
 
 <h2 class="title">Détail du ticket</h2>
@@ -83,10 +83,10 @@ if ($ticketfini[0]["CommentaireTicketSAV"] != "TRM" and $_SESSION["role"] == "SA
 <?php } ?>
 <a href="ticketController.php?action=
 <?php
-if (empty($_SESSION['post'])) {
+if (empty($_SESSION['posttri'])) {
     echo "ticket";
 } else {
-    echo $_SESSION['post'];
+    echo $_SESSION['posttri'];
 }
 ?>">Retour à la page précédente</a>
 <br>

@@ -6,7 +6,7 @@ spl_autoload_register(function ($classe) {
 $titre = "Avancement du ticket : " . $_SESSION["idticket"];
 
 ob_start();
-
+// var_dump($_SESSION);
 ?>
 <h2>Avancement du ticket : " <?= $_SESSION["idticket"]; ?></h2>
 <div id="formulaireErreur">

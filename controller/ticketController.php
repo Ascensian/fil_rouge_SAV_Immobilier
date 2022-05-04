@@ -17,33 +17,14 @@ if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 }
 if (isset($_POST['action'])) {
-    if ($_POST['action'] == "formulairehistoval") {
-        try {
-            $commentaire = trim($_POST["commentaire"]);
-            if (strlen($commentaire) > 2) {
-                ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
-            } else {
-                throw new Exception("Erreur : Le commentaire doit être rempli");
-            }
-            if (strtoupper($_POST["avancement"]) != "") {
-                ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
-            }
-            $_POST["action"] = "details";
-        } catch (Exception $e) {
-            $msgErreur = $e->getMessage();
-            $_POST['action'] = "formulairehistorique";
-        }
-    }
     $action = $_POST['action'];
     $_SESSION["post"] = $action;
 }
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
+    $_SESSION["get"] = $action;
 }
-if (isset($_GET['libTicket'])) {
-    //$ticket = ticketMgr::getRechercheByLib("root", "", $_GET["libTicket"]);
-    require("../vues/view_ticket.php");
-}
+
 
 $table = "";
 if ($action == "article") {
@@ -60,16 +41,19 @@ if ($table != "") {
 }
 switch ($action) {
     case "ticket":
-        $_SESSION["post"] = "ticket";
+        $_SESSION["posttri"] = "ticket";
         require("../vues/view_ticket.php");
         break;
     case "article":
+        $_SESSION["posttri"] = "article";
         require("../vues/view_ticket.php");
         break;
     case "date":
+        $_SESSION["posttri"] = "date";
         require("../vues/view_ticket.php");
         break;
     case "code":
+        $_SESSION["posttri"] = "code-";
         require("../vues/view_ticket.php");
         break;
     case "formulairehistorique":
@@ -85,5 +69,25 @@ switch ($action) {
         $ticket = ticketMgr::getTicketById("root", "", $_SESSION["getId"]);
         $_SESSION["idticket"] = $ticket[0]["IdTicketSAV"];
         require("../vues/view_ticketDetail.php");
+        break;
+    case "formulairehistoval":
+        $ticketfini = ticketMgr::getTicketFini("root", "", $_SESSION["getId"]);
+        $histo = ticketMgr::getHistoriqueById("root", "", $_SESSION["getId"]);
+        $ticket = ticketMgr::getTicketById("root", "", $_SESSION["getId"]);
+        try {
+            $commentaire = trim($_POST["commentaire"]);
+            if (strlen($commentaire) > 2) {
+                ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
+            } else {
+                throw new Exception("Erreur : Le commentaire doit être rempli");
+            }
+            if (strtoupper($_POST["avancement"]) != "") {
+                ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
+            }
+            require("../vues/view_ticketDetail.php");
+        } catch (Exception $e) {
+            $msgErreur = $e->getMessage();
+            require("../vues/formulairehistorique.php");
+        }
         break;
 }
