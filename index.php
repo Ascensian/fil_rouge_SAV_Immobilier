@@ -56,4 +56,8 @@ switch ($action) {
     case "article":
         require("vues/view_article.php");
         break;
+    case "recherche":
+        require("vues/view_advancedResearch.php");
+        break;
+    
 }
