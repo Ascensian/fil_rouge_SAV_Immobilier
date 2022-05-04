@@ -32,13 +32,13 @@ if (control_searchDisplayTicket == false) {
 
    var ticketForm = document.createElement("form");
    ticketForm.id = "formTicket";
-   ticketForm.action = "";
+   ticketForm.action = "index.php";
    ticketForm.method = "GET";
 
    var ticketFieldset = document.createElement("fieldset");
    var ticketLegend = document.createElement("legend");
    ticketLegend.id = "ticketLegend";
-   ticketLegend.insertAdjacentHTML("afterbegin", "saisir libellé de ticket");
+   ticketLegend.insertAdjacentHTML("afterbegin", "saisir libellé ticket");
 
    var ticketLabel = document.createElement("label");
    ticketLabel.setAttribute("for", "libTicket");
@@ -46,7 +46,7 @@ if (control_searchDisplayTicket == false) {
 
    var ticketInput = document.createElement("input");
    ticketInput.type = "text";
-   ticketInput.name = "numCommande";
+   ticketInput.name = "libTicket";
    ticketInput.placeholder = "Ex : PORTAIL ABIME";
 
    var ticketInputSubmit = document.createElement("input");
@@ -60,6 +60,7 @@ if (control_searchDisplayTicket == false) {
    divTicket.appendChild(ticketForm);
    document.querySelector(".contenu").appendChild(divTicket);
    changeDisplayTicket(true);
+   
 }
 }
 
