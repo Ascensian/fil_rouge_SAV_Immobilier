@@ -6,6 +6,9 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 // var_dump($_SESSION);
+if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role'])) {
+    header("Refresh:0; url = ../index.php", false);
+}
 $action = "ticket";
 $msgErreur = "";
 if (!isset($_SESSION["index"])) {

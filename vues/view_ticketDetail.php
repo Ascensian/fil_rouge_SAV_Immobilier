@@ -6,7 +6,7 @@ spl_autoload_register(function ($classe) {
 $titre = "Ticket";
 
 ob_start();
-
+var_dump($_SESSION);
 ?>
 
 <h2 class="title">Détail du ticket</h2>
@@ -74,7 +74,7 @@ if (!empty($histo)) {
 <?php } else {
     echo "Aucun suivi n'a été fait pour l'instant <br><br>";
 }
-if ($ticketfini[0]["CommentaireTicketSAV"] != "TRM") {
+if ($ticketfini[0]["CommentaireTicketSAV"] != "TRM" and $_SESSION["role"] == "SAV") {
 ?>
     <form action="ticketController.php?action=formulairehistorique" method="post">
         <input class="btn btn-primary" type="submit" value="Ajouter un avancement dans le ticket">
