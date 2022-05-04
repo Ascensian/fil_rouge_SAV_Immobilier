@@ -26,6 +26,18 @@ class ClientMgr{
     return $client;
     }
 
+    public static function modifClient(string $id, $adresse ,int $CP, string $ville ,string $email, int $choix = PDO::FETCH_ASSOC){
+
+
+        $sql = 'UPDATE `client` SET `AdresseClient` = "'.$adresse.'", `CPClient` = "'.$CP.'",
+         `VilleClient` = "'.$ville.'", `Email` = "'.$email.'" 
+         WHERE `client`.`IdClient` = "'.$id.'"'; 
     
+        $resultset = Connexion::getConnexion("root","")->query($sql);
+        $modif = self::getClient($id);
+        $resultset->closeCursor();
+        Connexion::disconnect();
+        return $modif;
+    }
 }
 ?>

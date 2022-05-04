@@ -7,49 +7,82 @@ spl_autoload_register(function ($classe) {
 $titre = "Details";
 $client = ClientMgr::getClient($_GET['id']);
 $tabcom = CommandeMgr::getCommande($_GET['id']);
-$articlecomm = ArticleMgr::getArticleCommande($_GET['CMD']);
-ob_start();?>
+-
+ob_start();
+echo $msg?>
 
-<h1><?php echo $titre1 ?></h1>
+<!-- <h1><?php echo $titre1 ?></h1> -->
 <div class="contenu grid-container">
 
     <div id="grandediv">
-    <?php if(isset($_GET['CMD']) AND (!isset($_POST['action']))) {
-            $CMD = $_GET["CMD"];
-            
-        require "../vues/view_detailcommandegrande.php";
-        }elseif(isset($_GET['id']) AND (!isset($_POST['action']))) {
-    $id = $_GET["id"];
-        require "../vues/view_detailclientgrande.php";
-        }
-        ?>
+<form action="controlerclient.php" method="GET">
+<fieldset id="formulaireclient">
+    <h1 id="detail">Détail Client</h1>
+        <div id="detailclient" class="col-7">
+            <div class="row g-3">
+                <div class="col">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" value="<?php echo $client[0]['NomClient']?>" aria-label="First name" name="nom" disabled>
+                </div>
+                <div class="col">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" class="form-control" value="<?php echo $client[0]['PrenomClient']?>" aria-label="Last name" name='prenom' disabled>
+                </div>
+            </div>
+                <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="inputEmail" value="<?php echo $client[0]['Email']?>" required>
+                </div>
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" name="inputAddress" value="<?php echo $client[0]['AdresseClient']?>" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">Ville</label>
+                    <input type="text" class="form-control" value="<?php echo $client[0]['VilleClient']?>" name="inputCity" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">Code Postal</label>
+                    <input type="text" class="form-control" value="<?php echo $client[0]['CPClient']?>" maxlength="5" minlength="5" name="inputZip" required>
+                </div>
+            </div>
+            <br>
+                <div class="col-12">
+                    <input type="hidden" name="action" value="modif"></input>
+                    <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
+                    <input type="submit" class="btn btn-primary" value="Modifier"></input>
+                </div>
+            </form>
+            </form>
+    </fieldset>
+
     </div>
 
-    <div id="petitediv1">     
-    <?php if(isset($_GET['CMD']) AND (!isset($_POST['action']))) {
-    $CMD = $_GET["CMD"];
-    
-        require "../vues/view_detailclientpetit.php";
-        }elseif(isset($_GET['id']) AND (!isset($_POST['action']))) {
-            $id = $_GET["id"];
-        require "../vues/view_detailcommandepetit.php";}
-        ?> 
-    </div>
+    <div id="petitediv1">
+    <table id="tabcom" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th  scope="col">ID commande</th>
+      <th scope="col">Etat Commande</th>
+      <th scope="col">Date de commande</th>
 
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    foreach($tabcom as $key=>$value){ 
+        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?CMD=<?php echo $value['IdCommande'] ?>'">
+           <th scope="row"><?php echo $value["IdCommande"]?></th>
+            <td><?php echo $value["EtatCommande"]?></td>
+            <td><?php echo $value["DateCommande"]?></td>
+        </tr>
 
-        <div id="petitediv2">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint quasi aperiam eum, commodi autem dignissimos nulla ratione vel! Aperiam amet nihil, quia eum cum deleniti itaque voluptatibus quidem repellat non?
-            Corporis facilis iste ratione, perspiciatis vitae deleniti? Ipsam dignissimos natus repellat doloremque nisi fugit cumque laboriosam voluptatum neque alias! Cum labore quaerat cupiditate sunt adipisci facere exercitationem recusandae odit facilis.
-            Placeat necessitatibus sed magnam dolore iure temporibus pariatur assumenda ipsum unde, cumque vero mollitia aut quo exercitationem quam voluptate aliquid officiis earum cum similique at, accusantium magni voluptatibus excepturi. Aliquid.</p>
-        </div>
-
-    <div id="petitediv3">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint quasi aperiam eum, commodi autem dignissimos nulla ratione vel! Aperiam amet nihil, quia eum cum deleniti itaque voluptatibus quidem repellat non?
-        Corporis facilis iste ratione, perspiciatis vitae deleniti? Ipsam dignissimos natus repellat doloremque nisi fugit cumque laboriosam voluptatum neque alias! Cum labore quaerat cupiditate sunt adipisci facere exercitationem recusandae odit facilis.
-        Placeat necessitatibus sed magnam dolore iure temporibus pariatur assumenda ipsum unde, cumque vero mollitia aut quo exercitationem quam voluptate aliquid officiis earum cum similique at, accusantium magni voluptatibus excepturi. Aliquid.</p>
-    </div>
-    
-</div>
+<?php
+    }
+?>
+  </tbody>
+</table>
 
 
 

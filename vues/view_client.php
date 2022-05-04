@@ -10,7 +10,7 @@ ob_start();?>
 
 
 <h1 id="titre">Clients</h1>
-
+<?php echo $msg; ?>
 <div id="listclient">
 
 <table class="table table-striped table-hover">

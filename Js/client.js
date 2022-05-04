@@ -9,3 +9,4 @@ for(let ligne of lignecomm){
         window.location.search = "CMD="+idcmd+"&id="+idclient;
     })
 }
+

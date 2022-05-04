@@ -3,24 +3,38 @@
     margin-left: 11%;
     margin-right: 1%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
   }
-  
+
+
+#tabarticle{
+    width: 40% !important;
+    margin-left: 11%;
+    margin-top: 2%;
+}
 #tabcom{
     width: auto !important;
     height: auto !important;
 }
   
+h1{
+    margin-left: 11%;
+}
 
+#detail{
+    margin-top: -4% !important;
+    margin-left: -0.5%;
+    margin-bottom: 3%;
+}
   table {
       width: 300% !important;
   }
   
-#titre{
-    margin-left: 11%;
+titre{
+    margin-left: 11% !important;
 }
 
 form{
@@ -47,7 +61,7 @@ form{
       background-color: rgba(170, 234, 253, 0.945);
       display: grid;
       width: 100%;
-      grid-area: 1 / 1 / 4 / 4;
+      grid-area: 1 / 1 / 2 / 4;
   }
 
   #petitediv1{
