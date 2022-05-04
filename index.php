@@ -9,27 +9,37 @@ session_start();
 
 $action = "connexion";
 $msgErreur = "";
+
+// créé le tableau associatif SESSION si le formulaire de connexion n'est pas vide avec les méthodes POST et GET
 if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
     $_SESSION = array();
 }
+
+// si la clé "action" existe
 if (isset($_POST['action'])) {
+    // si la valeur de post est égale à dashboard
     if ($_POST['action'] == "dashboard") {
         try {
+            // variable qui contient le tableau retourné avec le bon identifiant et login
             $compte = ConnexionMgr::controleconnexion($_POST["identifiant"], $_POST["mdp"]);
             $_SESSION["id"] = $compte[0]["idEmploye"];
             $_SESSION["nom"] = $compte[0]["NomEmploye"];
             $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
             $_SESSION["role"] = $compte[0]["RoleEmploye"];
             $action = $_POST['action'];
-            // var_dump($_SESSION);
+            
         } catch (ConnexionMgrException $e) {
             $msgErreur = $e->getMessage();
         }
     }
 }
+
+// Récupère la valeur de la méthode GET d'un formulaire pour l'assigner à la variable action
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+// Indiquer à la session si l'on est sur la page index ou non, "index" est utilisé dans les traitements liés au changement de page
 if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 1;
 } else if ($_SESSION["index"] == 0) {
@@ -54,10 +64,10 @@ switch ($action) {
         require("vues/view_client.php");
         break;
     case "article":
-        require("vues/view_article.php");
+        header("Refresh:0; url = controller/articleController.php", false);
         break;
     case "recherche":
-        require("vues/view_advancedResearch.php");
+        header("Refresh:0; url = controller/rechercheController.php", false);
         break;
     
 }
