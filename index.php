@@ -16,6 +16,7 @@ if (isset($_POST['action'])) {
             $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
             $_SESSION["role"] = $compte[0]["RoleEmploye"];
             $action = $_POST['action'];
+            var_dump($_SESSION);
         } catch (ConnexionMgrException $e) {
             $msgErreur = $e->getMessage();
         }
@@ -39,6 +40,7 @@ switch ($action) {
     case "article":
         require("..vues/view_article.php");
     case "advancedResearch":
-        require("..vues/view_advancedResearch.php");
- 
+        echo "coucou";
+        header("controllerRecherche/recherche.php");
+        break;
 }
