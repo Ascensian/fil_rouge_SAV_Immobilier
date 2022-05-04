@@ -12,7 +12,6 @@ ob_start();
         <div id="client">client</div>
         <div id="order">commande</div>
         <div id="ticket">ticket</div>
-        <div id="employe">employé</div>
     </div>
 
 
@@ -24,4 +23,4 @@ ob_start();
 $contenu = ob_get_clean();
 ?>
 <script src="/Js/controlForm.js" type="module"></script>
-<?php require "../vues/gabarit.php"; ?>
+<?php require "vues/gabarit.php"; ?>

@@ -13,7 +13,7 @@
   echo '<link href="../css/dashboard.css" rel="stylesheet">';
   ?>
 
-
+  <link rel="stylesheet" href="styleRecherche.css.css">
 </head>
 
 <body>
@@ -39,12 +39,18 @@
         <li><button class="dropdown-item btn1" type="button">Client</button></li>
       </ul>
     </div>
+
+  <!-- SEARCH FIELD  -->
+    
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+
+
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?></a>
       </div>
     </div>
+
   </header>
 
   <!-- SIDEBAR -->
@@ -111,6 +117,21 @@
                 Article
               </a>
             </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=recherche">
+                <span data-feather="bar-chart-2"></span>
+                Recherche personnalisée
+              </a>
+            </li>
+
+
           </ul>
         </div>
       </nav>
