@@ -6,13 +6,12 @@ spl_autoload_register(function ($classe) {
 session_start();
 
 
-
 $action = "connexion";
 $msgErreur = "";
 if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
     $_SESSION = array();
 }
-if (isset($_POST['action'])) {
+if (isset($_POST['action']) and isset($_SESSION)) {
     if ($_POST['action'] == "dashboard") {
         try {
             $compte = ConnexionMgr::controleconnexion($_POST["identifiant"], $_POST["mdp"]);
@@ -27,7 +26,7 @@ if (isset($_POST['action'])) {
         }
     }
 }
-if (isset($_GET['action'])) {
+if (isset($_GET['action']) and isset($_SESSION["role"])) {
     $action = $_GET['action'];
 }
 if (!isset($_SESSION["index"])) {
@@ -35,7 +34,6 @@ if (!isset($_SESSION["index"])) {
 } else if ($_SESSION["index"] == 0) {
     $_SESSION["index"] = 1;
 }
-
 
 switch ($action) {
     case "connexion":
@@ -59,5 +57,4 @@ switch ($action) {
     case "recherche":
         require("vues/view_advancedResearch.php");
         break;
-    
 }

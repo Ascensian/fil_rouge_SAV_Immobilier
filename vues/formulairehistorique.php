@@ -44,7 +44,7 @@ ob_start();
 
 </form>
 <br>
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $_SESSION["idticket"] ?>" method="post" class="histoval">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $_SESSION["idticket"] ?>&action=detailsTicket" method="post" class="histoval">
     <input type="submit" value="annuler" class="btn btn-danger">
 </form>
 <br>
