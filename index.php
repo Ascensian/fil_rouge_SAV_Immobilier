@@ -5,8 +5,13 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 
+
+
 $action = "connexion";
 $msgErreur = "";
+if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
+    $_SESSION = array();
+}
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "dashboard") {
         try {
@@ -22,6 +27,14 @@ if (isset($_POST['action'])) {
         }
     }
 }
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+if (!isset($_SESSION["index"])) {
+    $_SESSION["index"] = 1;
+} else if ($_SESSION["index"] == 0) {
+    $_SESSION["index"] = 1;
+}
 
 
 switch ($action) {
@@ -32,11 +45,14 @@ switch ($action) {
         require('vues/view_dashboard.php');
         break;
     case "commande":
-        require("../vues/view_commande.php");
+        require("vues/view_commande.php");
+        break;
     case "ticket":
-        require("..vues/view_ticket.php");
+        header("Refresh:0; url = controller/ticketController.php", false);
+        break;
     case "client":
-        require("..vues/view_client.php");
+        require("vues/view_client.php");
+        break;
     case "article":
         require("..vues/view_article.php");
     case "advancedResearch":

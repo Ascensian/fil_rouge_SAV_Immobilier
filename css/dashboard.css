@@ -12,13 +12,15 @@ body {
  * Sidebar
  */
 
-.contenu{
+ .contenu{
   width: 90%;
-  
+  margin-left: 20vh;
+  /* margin-top: 10vh;     */
 }
-
+ 
 .sidebar {
-  /* position: absolute; */
+  position: fixed !important; 
+  margin-top: 4%;
   top: 0;
   /* rtl:raw:
   right: 0;
@@ -29,12 +31,6 @@ body {
   z-index: 100; /* Behind the navbar */
   padding: 0 15px 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-}
-
-@media (max-width: 767.98px) {
-  .sidebar {
-    top: 5rem;
-  }
 }
 
 .sidebar-sticky {
@@ -87,10 +83,6 @@ body {
 /*
  * Navbar
  */
-
-#btnselect{
-  width: 35px !important;
-}
 
 .nav-item{
   font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', sans-serif;
@@ -148,4 +140,15 @@ body {
   outline: 0; 
   box-shadow: none;
 }
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+
+
+
+
 

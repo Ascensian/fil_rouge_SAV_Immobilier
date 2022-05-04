@@ -1,0 +1,54 @@
+<?php
+spl_autoload_register(function ($classe) {
+    require "../classes/" . $classe . ".class.php";
+});
+
+
+session_start();
+// var_dump($_SESSION);
+$action = "ticket";
+$msgErreur = "";
+if (!isset($_SESSION["index"])) {
+    $_SESSION["index"] = 0;
+} else if ($_SESSION["index"] == 1) {
+    $_SESSION["index"] = 0;
+}
+if (isset($_POST['action'])) {
+    if ($_POST['action'] == "formulairehistoval") {
+        ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
+        if (strtoupper($_POST["avancement"]) == "TRM") {
+            ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
+        }
+        $_POST["action"] = "ticket";
+    }
+    $action = $_POST['action'];
+    $_SESSION["post"] = $action;
+}
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+if (isset($_GET['id']) and !isset($_POST['action'])) {
+    $id = $_GET["id"];
+    require("../vues/view_ticketDetail.php");
+} else {
+    switch ($action) {
+        case "ticket":
+            require("../vues/view_ticket.php");
+            break;
+        case "article":
+            require("../vues/view_ticket.php");
+            break;
+        case "date":
+            require("../vues/view_ticket.php");
+            break;
+        case "code":
+            require("../vues/view_ticket.php");
+            break;
+        case "formulairehistorique":
+            require("../vues/formulairehistorique.php");
+            break;
+        case "formulaireNVTicket":
+            require("../vues/view_nouveauTicket.php");
+            break;
+    }
+}

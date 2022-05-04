@@ -1,0 +1,41 @@
+#ticketbtn{
+  
+    width : 50vh !important;
+    height : 10vh;
+    /* background-color : lightcoral; */
+  }
+  
+.btntri{
+    margin-top : 2.5vh;
+    margin-left: 1.5vh;
+    width : 8vh;
+    display: inline-block;
+
+}
+
+.title{
+    margin-left: 1.5vh; 
+}
+
+.table{
+    width : 50%; 
+}
+
+th, tr{
+    text-align: center;
+
+}
+
+#btnselect{
+    width: 35px !important;
+}
+
+/* ticket détail */
+
+form{
+    width : 20%;
+}
+
+#textehistocode{
+    visibility : hidden;
+}
