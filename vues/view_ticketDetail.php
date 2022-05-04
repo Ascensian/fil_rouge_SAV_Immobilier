@@ -2,14 +2,11 @@
 spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
-require "../classes/appelTicketMgr.php";
+
 $titre = "Ticket";
 
 ob_start();
-$ticket = getTicket($id);
-$histo = getTicketHistorique($id);
-$_SESSION["idticket"] = $ticket[0]["IdTicketSAV"];
-// var_dump($_SESSION);
+
 ?>
 
 <h2 class="title">Détail du ticket</h2>
@@ -76,11 +73,14 @@ if (!empty($histo)) {
     </table>
 <?php } else {
     echo "Aucun suivi n'a été fait pour l'instant <br><br>";
-} ?>
-<form action="ticketController.php?action=formulairehistorique" method="post">
-    <input class="btn btn-primary" type="submit" value="Ajouter un avancement dans le ticket">
-</form>
-<br>
+}
+if ($ticketfini[0]["CommentaireTicketSAV"] != "TRM") {
+?>
+    <form action="ticketController.php?action=formulairehistorique" method="post">
+        <input class="btn btn-primary" type="submit" value="Ajouter un avancement dans le ticket">
+    </form>
+    <br>
+<?php } ?>
 <a href="ticketController.php?action=
 <?php
 if (empty($_SESSION['post'])) {

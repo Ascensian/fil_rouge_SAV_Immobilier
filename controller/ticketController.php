@@ -15,11 +15,21 @@ if (!isset($_SESSION["index"])) {
 }
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "formulairehistoval") {
-        ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
-        if (strtoupper($_POST["avancement"]) == "TRM") {
-            ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
+        try {
+            $commentaire = trim($_POST["commentaire"]);
+            if (strlen($commentaire) > 2) {
+                ticketMgr::insertHistoTicket("root", "", $_SESSION["idticket"], $_POST["commentaire"], $_SESSION["id"]);
+            } else {
+                throw new Exception("Erreur : Le commentaire doit être rempli");
+            }
+            if (strtoupper($_POST["avancement"]) != "") {
+                ticketMgr::updateEtatTicket("root", "", $_SESSION["idticket"], $_POST["avancement"]);
+            }
+            $_POST["action"] = "details";
+        } catch (Exception $e) {
+            $msgErreur = $e->getMessage();
+            $_POST['action'] = "formulairehistorique";
         }
-        $_POST["action"] = "ticket";
     }
     $action = $_POST['action'];
     $_SESSION["post"] = $action;
@@ -27,12 +37,36 @@ if (isset($_POST['action'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
-if (isset($_GET['id']) and !isset($_POST['action'])) {
-    $id = $_GET["id"];
+if (isset($_GET['libTicket'])) {
+    //$ticket = ticketMgr::getRechercheByLib("root", "", $_GET["libTicket"]);
+    require("../vues/view_ticket.php");
+}
+if ((isset($_GET['id']) and !isset($_POST['action'])) or $action == "details") {
+    if (isset($_GET['id'])) {
+        $_SESSION["getId"] = $_GET["id"];
+    }
+    $ticketfini = ticketMgr::getTicketFini("root", "", $_SESSION["getId"]);
+    $histo = ticketMgr::getHistoriqueById("root", "", $_SESSION["getId"]);
+    $ticket = ticketMgr::getTicketById("root", "", $_SESSION["getId"]);
+    $_SESSION["idticket"] = $ticket[0]["IdTicketSAV"];
     require("../vues/view_ticketDetail.php");
 } else {
+    $table = "";
+    if ($action == "article") {
+        $table = "IdArticle";
+    } else if ($action == "date") {
+        $table = "DateTicketSAV";
+    } else if ($action == "code") {
+        $table = "CommentaireTicketSAV";
+    }
+    if ($table != "") {
+        $ticket = ticketMgr::getTicketsOrderBy("root", "", $table);
+    } else {
+        $ticket = ticketMgr::getAllTickets("root", "");
+    }
     switch ($action) {
         case "ticket":
+            $_SESSION["post"] = "ticket";
             require("../vues/view_ticket.php");
             break;
         case "article":
@@ -45,10 +79,39 @@ if (isset($_GET['id']) and !isset($_POST['action'])) {
             require("../vues/view_ticket.php");
             break;
         case "formulairehistorique":
+            $histo = ticketMgr::getHistoriqueById("root", "", $_SESSION["getId"]);
             require("../vues/formulairehistorique.php");
             break;
-        case "formulaireNVTicket":
-            require("../vues/view_nouveauTicket.php");
-            break;
+            // case "formulaireNVTicket":
+            //     if (isset($_POST["compteur"])) {
+            //         $_SESSION["compteur"] = intval($_POST["compteur"]);
+            //     } else {
+            //         $_SESSION["compteur"] = 0;
+            //     }
+            //     $compteur = $_SESSION["compteur"];
+            //     if ($compteur == 0) {
+            //         $_SESSION["infoClient"] = array();
+            //         $_SESSION["nomClientRetenu"] = "";
+            //         $_SESSION["prenomClientRetenu"] = "";
+            //         $_SESSION["infoCommande"] = array();
+            //         $_SESSION["numCommande"] = "";
+            //     }
+            //     if ($compteur == 1 and isset($_POST["nomClient"])) {
+            //         $infoclient = ticketMgr::getClientByNom("root", "", $_POST["nomClient"]); // Faire passer sur le manager de client
+            //         $_SESSION["infoClient"] = $infoclient;
+            //     }
+            //     if ($compteur == 2 and isset($_POST["nomClient"])) {
+            //         $_SESSION["nomClientRetenu"] = $_POST["nomClient"];
+            //         $_SESSION["prenomClientRetenu"] = $_POST["prenomClient"];
+            //         $infoCommande = ticketMgr::getCommandesByNomAndPrenom("root", "", $_POST["nomClient"], $_POST["prenomClient"]);
+            //         $_SESSION["infoCommande"] = $infoCommande;
+            //     }
+            //     if ($compteur == 3 and isset($_POST["numCommande"])) {
+            //         $_SESSION["numCommande"] = $_POST["numCommande"];
+            //         $infoarticle = ticketMgr::getArticlesByIdCommande("root", "", $_POST["numCommande"]);
+            //         $_SESSION["infoArticle"] = $infoarticle;
+            //     }
+            //     require("../vues/view_nouveauTicket.php");
+            //     break;
     }
 }

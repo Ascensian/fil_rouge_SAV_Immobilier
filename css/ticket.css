@@ -37,5 +37,9 @@ form{
 }
 
 #textehistocode{
-    visibility : hidden;
+    display: none;
+}
+
+#tableTicket{
+    width : 100%;
 }

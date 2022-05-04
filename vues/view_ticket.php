@@ -2,7 +2,7 @@
 spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
 });
-require "../classes/appelTicketMgr.php";
+
 $titre = "Ticket";
 
 ob_start();
@@ -15,16 +15,16 @@ ob_start();
 ?>
 
 
-
-<h2 class="title">Tickets SAV</h2>
 <br>
+<h2 class="title">Tickets SAV</h2>
+<!-- <br>
 <form action="ticketController.php" method="post">
     <input type="hidden" name="action" value="formulaireNVTicket">
     <input type="submit" class="btn btn-success" value="Nouveau ticket">
-</form>
+</form> -->
 <br>
-<?php if ($action == "ticket") {
-    $ticket = getTickets();
+<?php if ($action == "ticket" or isset($_GET["libTicket"])) {
+
 ?>
     <table class="table table-bordered table-striped " id="tableTicket">
         <thead>
@@ -56,7 +56,7 @@ ob_start();
     </table>
 <?php
 } else {
-    $ticket = getTickets($action);
+    // $ticket = getTickets($action);
 ?>
     <table class="table table-bordered table-striped " id="tableTicketDetail">
         <thead>
