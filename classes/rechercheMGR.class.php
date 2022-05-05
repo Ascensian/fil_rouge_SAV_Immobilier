@@ -24,7 +24,6 @@ class rechercheMGR {
     public static function rechercheLibTicket (string $libTicket) {
         $requete = "SELECT ProbTicketSAV from ticketsav WHERE ticketsav LIKE CONCAT('%', $libTicket, '%')";
         $resultat = Connexion::getConnexion("root", "")->prepare($requete);
-        // execution de la requete
         $resultat->execute();
         $tab = $resultat->fetchAll();
         return $tab;

@@ -9,7 +9,8 @@ ob_start(); ?>
   $tabArticles = articleMgr::getAllArticles();
   ?>
 
-  <button type="button" class="btn btn-primary">Ajouter un article</button>
+  <?php require("view_form_add_article.php") ?>
+  
   
   <div class="row">
 
@@ -30,6 +31,7 @@ ob_start(); ?>
     <?php }?>
 
   </div>
+
 
 
   <?php

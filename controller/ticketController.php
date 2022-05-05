@@ -8,6 +8,7 @@ session_start();
 // var_dump($_SESSION);
 $action = "ticket";
 $msgErreur = "";
+
 if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 } else if ($_SESSION["index"] == 1) {
@@ -37,6 +38,8 @@ if (isset($_POST['action'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+// vérifie 
 if (isset($_GET['libTicket'])) {
     //$ticket = ticketMgr::getRechercheByLib("root", "", $_GET["libTicket"]);
     require("../vues/view_ticket.php");
@@ -82,6 +85,7 @@ if ((isset($_GET['id']) and !isset($_POST['action'])) or $action == "details") {
             $histo = ticketMgr::getHistoriqueById("root", "", $_SESSION["getId"]);
             require("../vues/formulairehistorique.php");
             break;
+        
             // case "formulaireNVTicket":
             //     if (isset($_POST["compteur"])) {
             //         $_SESSION["compteur"] = intval($_POST["compteur"]);
