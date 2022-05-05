@@ -57,45 +57,4 @@ class TicketMgr
         $tresultat = $resultat->fetchAll($typeEnregisterment);
         return $tresultat;
     }
-
-    // Doit aller dans le manager de client
-    public static function getCountClientByNom(string $user, string $password, string $nomClient, int $typeEnregisterment = PDO::FETCH_ASSOC)
-    {
-        $nomClient = trim($nomClient);
-        $requete = 'SELECT COUNT(NomClient) FROM client WHERE NomClient LIKE "%' . $nomClient . '%"';
-        $resultat = Connexion::getConnexion($user, $password)->query($requete);
-        $tresultat = $resultat->fetchAll($typeEnregisterment);
-        return $tresultat;
-    }
-
-
-    public static function getClientByNom(string $user, string $password, string $nomClient, int $typeEnregisterment = PDO::FETCH_ASSOC)
-    {
-        $nomClient = trim($nomClient);
-        $requete = 'SELECT * FROM client WHERE NomClient LIKE "%' . $nomClient . '%"';
-        $resultat = Connexion::getConnexion($user, $password)->query($requete);
-        $tresultat = $resultat->fetchAll($typeEnregisterment);
-        return $tresultat;
-    }
-
-    //Doit aller dans le manager de commandes
-    public static function getCommandesByNomAndPrenom(string $user, string $password, string $nomClient, string $prenomClient, int $typeEnregisterment = PDO::FETCH_ASSOC)
-    {
-        $nomClient = trim($nomClient);
-        $prenomClient = trim($prenomClient);
-        $requete = 'SELECT c.IdCommande, cl.IdClient FROM commande c JOIN client cl on c.IdClient = cl.IdClient WHERE cl.NomClient = "' . $nomClient . '" AND cl.PrenomClient = "' . $prenomClient . '"';
-        $resultat = Connexion::getConnexion($user, $password)->query($requete);
-        $tresultat = $resultat->fetchAll($typeEnregisterment);
-        return $tresultat;
-    }
-
-    // Doit aller dans le manager d'articles
-    public static function getArticlesByIdCommande(string $user, string $password, string $numCommande, int $typeEnregisterment = PDO::FETCH_ASSOC)
-    {
-        $numCommande = trim($numCommande);
-        $requete = 'SELECT e.IdArticle, a.LibArticle FROM emballer e JOIN article a ON e.IdArticle = a.IdArticle WHERE IdCommande ="' . $numCommande . '"';
-        $resultat = Connexion::getConnexion($user, $password)->query($requete);
-        $tresultat = $resultat->fetchAll($typeEnregisterment);
-        return $tresultat;
-    }
 }

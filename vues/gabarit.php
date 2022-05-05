@@ -78,7 +78,7 @@
                 <span data-feather="bar-chart-2"></span>
                 <?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?>
               </a>
-              <?php if ($_SESSION["role"] != "ADMIN") { ?>s
+              <?php if ($_SESSION["role"] != "ADMIN") { ?>
             </li>
             <li class="nav-item">
               <a class="nav-link active" id="dashboard" aria-current="page" href="<?php
