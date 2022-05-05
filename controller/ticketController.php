@@ -39,7 +39,7 @@ if (isset($_SESSION["msgErreurFormHisto"])) {
     unset($_SESSION["msgErreurFormHisto"]);
 }
 
-// Permet d'appeler la table pour la requete pour le tri
+// Permet d'appeler la table pour la requete pour le tri des tickets
 $table = "";
 if ($action == "article") {
     $table = "IdArticle";
@@ -54,7 +54,7 @@ if ($table != "") {
     $ticket = ticketMgr::getAllTickets($_SESSION["userRole"],  $_SESSION["mdpRole"]);
 }
 switch ($action) {
-    case "ticket":
+    case "ticket": // Action par défaut qui envoie les utilisateurs sur la page tout les tickets
         $_SESSION["posttri"] = "ticket";
         require("../vues/view_ticket.php");
         break;
