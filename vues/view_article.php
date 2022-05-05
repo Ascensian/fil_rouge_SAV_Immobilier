@@ -10,6 +10,6 @@ ob_start(); ?>
 
 <?php $contenu = ob_get_clean();
 
-require "vues/gabarit.php"
+require "vues/gabarit.php";
 
 ?>

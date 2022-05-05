@@ -128,6 +128,7 @@ ob_start();
 <?php $contenu = ob_get_clean();
 
 
-require "../vues/gabarit.php"
+require "../fil_rouge_SAV_Immobilier/vues/gabarit.php";
+
 
 ?>

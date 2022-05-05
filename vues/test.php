@@ -19,3 +19,23 @@ session_start();
 $id = "TICK0003";
 $test = ticketMgr::getTicketById("root", "", $id);
 var_dump($test);
+try {
+    $modif =  ClientMgr::modifClient(
+        $_GET['id'],
+        $_GET['nom'],
+        $_GET['prenom'],
+        $_GET['inputAdress'],
+        $_GET['inpuZip'],
+        $_GET['inputCity'],
+        $_GET['inputEmail14']
+    );
+    var_dump($modif);
+    if (empty($modif)) {
+        echo "ok";
+        throw new Exception("erreur modif");
+    }
+    die();
+    $_GET['action'] = "client";
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
