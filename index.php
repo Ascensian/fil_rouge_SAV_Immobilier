@@ -17,11 +17,13 @@ if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action
 
 // si la clé "action" existe
 if (isset($_POST['action'])) {
+    var_dump($_POST['action']);
     // si la valeur de post est égale à dashboard
     if ($_POST['action'] == "dashboard") {
         try {
             // variable qui contient le tableau retourné avec le bon identifiant et login
             $compte = ConnexionMgr::controleconnexion($_POST["identifiant"], $_POST["mdp"]);
+            var_dump($compte);
             $_SESSION["id"] = $compte[0]["idEmploye"];
             $_SESSION["nom"] = $compte[0]["NomEmploye"];
             $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
@@ -55,6 +57,7 @@ switch ($action) {
         require('vues/view_dashboard.php');
         break;
     case "commande":
+        
         require("vues/view_commande.php");
         break;
     case "ticket":

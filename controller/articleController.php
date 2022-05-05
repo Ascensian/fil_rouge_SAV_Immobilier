@@ -13,10 +13,13 @@ if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 }
 
-if ($_POST['action'] == "article") {
+// if ($_POST['action'] == "article") {
 
-}
+// }
 switch ($action) {
     case "article" :
+        require('../vues/view_article.php');
+        require("../vues/view_ticket.php");
+        break;
 }
 ?>

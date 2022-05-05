@@ -137,7 +137,7 @@
       </nav>
       <div class="contenu">
         <?= $contenu ?>
-        <a href="#hautDePage">Haut de page</a>
+        
       </div>
       <!-- FOOTER  -->
 
