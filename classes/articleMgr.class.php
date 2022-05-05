@@ -6,7 +6,7 @@ class articleMgr {
         $requete = "SELECT LibArticle, PrixUniteArticle, StockArticle FROM article";
         $resultat = Connexion::getConnexion("root", "")->prepare($requete);
         $resultat->execute();
-        $tab = $resultat->fetchAll();
+        $tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
         return $tab;
     }
 }

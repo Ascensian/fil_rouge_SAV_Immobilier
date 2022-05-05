@@ -5,46 +5,31 @@ $titre = "Article";
 ob_start(); ?>
 
 <h1>Articles</h1>
-<div class="row">
-<div class="card col-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+<?php 
+  $tabArticles = articleMgr::getAllArticles();
+  ?>
+  <div class="row">
 
-<div class="card col-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-<div class="card col-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-<div class="card col-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-</div>
+  <?php
+  foreach ($tabArticles as $key => $value) { ?>
+  <!-- début de loop -->
+    <div class="card col-4" style="width: 25rem;">
+      <div class="card-body">
+        <h5 class="card-title"><?= $value["LibArticle"] ?></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Prix unitaire: <?= $value["PrixUniteArticle"] ?></h6>
+        <p class="card-subtitle mb-2 text-muted">Stock : <?= $value["StockArticle"] ?></p>
+        <a href="#" class="card-link">Modifier</a>
+        <a href="#" class="card-link">Supprimer</a>
+      </div>
+    </div>
 
+    <?php }?>
+
+  </div>
+  <?php
+  // var_dump($tabArticles);
+
+    ?>
 
 <?php $contenu = ob_get_clean();
 
