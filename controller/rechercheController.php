@@ -7,29 +7,24 @@ session_start();
 
 
 
-$action = "recherche";
+$action = "query";
 
 if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 } else if ($_SESSION["index"] == 1) {
     $_SESSION["index"] = 0;
 }
-if (isset($_GET["libTicket"])) {
-    $ticket = rechercheMGR::rechercheLibTicket($_GET["libTicket"]);
-var_dump($ticket);
+
+if (isset($_POST["action"]) == "query") {
+    $action = $_POST["action"];
 }
 
 
 switch ($action) {
-    case "recherche":
-        require("../vues/view_advancedResearch.php");
+    case "query":
+        echo "couc";
+        var_dump(rechercheMGR::rechercheNomClient("Adn"));
+        require("../vues/view_search.php");
         break;
-  case "libTicket":
-    if (isset($_GET["libTicket"])) {
-       
-        var_dump($ticket);
-        require("../vues/view_ticket.php");
-    } 
-    
     
 }

@@ -41,9 +41,10 @@
     </div>
 
   <!-- SEARCH FIELD  -->
-    
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-
+    <form action="../controller/rechercheController.php" method="post">
+      <input type="text">
+      <button type="submit" name="action" value="query">GO</button>
+    </form>
 
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
@@ -144,7 +145,7 @@
       <script src="../Js/dashboard.js"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      
       <script src="../Js/dashboard.js"></script>
       <script src="../Js/ticket.js"></script>

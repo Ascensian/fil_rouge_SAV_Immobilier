@@ -3,9 +3,9 @@
 class rechercheMGR {
     
     public static function rechercheNomClient(string $nom) {
-        // requete sql
-        $requete = "SELECT NomClient, PrenomClient FROM client WHERE NomClient LIKE CONCAT('%', $nom, '%')";
-        // recupération de la connexion et preparation de la requete
+        
+        $requete = "SELECT NomClient, PrenomClient FROM client WHERE NomClient LIKE '%" . $nom ."%'";
+        echo $requete;
         $resultat = Connexion::getConnexion("root", "")->prepare($requete);
         $resultat->execute();
         $tab = $resultat->fetchAll();
@@ -28,6 +28,8 @@ class rechercheMGR {
         $tab = $resultat->fetchAll();
         return $tab;
     }
+
+    
 }
  
 ?>

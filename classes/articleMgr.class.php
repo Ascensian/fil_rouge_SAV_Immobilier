@@ -3,7 +3,7 @@
 class articleMgr {
 
     public static function getAllArticles () {
-        $requete = "SELECT LibArticle, PrixUniteArticle, StockArticle FROM article";
+        $requete = "SELECT IdArticle,LibArticle, PrixUniteArticle, StockArticle FROM article";
         $resultat = Connexion::getConnexion("root", "")->prepare($requete);
         $resultat->execute();
         $tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
@@ -29,5 +29,19 @@ class articleMgr {
 
     public static function updateArticle () {
 
+    }
+
+    public static function getNumberArticles () {
+        $requete = "SELECT COUNT(*) FROM `article`";
+        $resultat = Connexion::getConnexion("root", "")->prepare($requete);
+        $resultat->execute();
+        $count = $resultat->fetch(PDO::FETCH_ASSOC);
+        return $count;
+    }
+
+    public static function getStockNumber (string $id) {
+        $requete = "SELECT StockArticle from article WHERE IdArticle = :id";
+        $resultat = Connexion::getConnexion("root", "")->prepare($requete);
+        
     }
 }
