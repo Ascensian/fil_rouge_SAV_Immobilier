@@ -9,4 +9,18 @@ class articleMgr {
         $tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
         return $tab;
     }
+
+    public static function addArticle () {
+        $requete = "";
+        $resultat = Connexion::getConnexion("root", "")->prepare($requete);
+        $resultat->execute();
+    }
+
+    public static function deleteArticle () {
+
+    }
+
+    public static function updateArticle () {
+
+    }
 }
