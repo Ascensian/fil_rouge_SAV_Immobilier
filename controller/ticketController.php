@@ -6,8 +6,8 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 // var_dump($_SESSION);
-if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role'])) {
-    header("Refresh:0; url = ../index.php?action=dashboard", false);
+if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
+    header("Refresh:0; url = ../index.php?action=connexion", false);
 }
 $action = "ticket";
 $msgErreur = "";
@@ -23,6 +23,10 @@ if (isset($_POST['action'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     $_SESSION["get"] = $action;
+}
+if (isset($_SESSION["msgErreurFormHisto"])) {
+    $msgErreur = $_SESSION["msgErreurFormHisto"];
+    unset($_SESSION["msgErreurFormHisto"]);
 }
 
 
@@ -83,7 +87,7 @@ switch ($action) {
             }
             header("Refresh:0; url = ticketController.php?action=detailsTicket", false);
         } catch (Exception $e) {
-            $msgErreur = $e->getMessage();
+            $_SESSION["msgErreurFormHisto"] = $e->getMessage();
             header("Refresh:0; url = ticketController.php?action=formulairehistorique", false);
         }
         break;

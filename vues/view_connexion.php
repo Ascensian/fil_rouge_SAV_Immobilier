@@ -38,7 +38,8 @@
 
                         <!-- Submit button -->
                         <div class="row">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="action" id="dashboard" value="dashboard">Connexion</button>
+                            <input type="hidden" name="seconnecter" value="1">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="action" id="dashboard" value="connexionval">Connexion</button>
                         </div>
                     </form>
                     <div id="divmsgErreur">
