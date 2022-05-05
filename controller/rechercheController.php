@@ -22,16 +22,15 @@ if (isset($_POST["action"])) {
     
 }
 
-
+if(isset($_POST["valeurRecherche"])) {
+    $tabClient = rechercheMGR::rechercheNomClient($_POST['valeurRecherche']);
+    $tabCommande = rechercheMGR::rechercheNumCommande($_POST['valeurRecherche']);
+    $tabTicket = rechercheMGR::rechercheLibTicket($_POST['valeurRecherche']);
+}
 
 
 switch ($action) {
     case "query":
-        
-        $tabClient = rechercheMGR::rechercheNomClient($_POST['valeurRecherche']);
-        $tabCommande = rechercheMGR::rechercheNumCommande($_POST['valeurRecherche']);
-        $tabTicket = rechercheMGR::rechercheLibTicket($_POST['valeurRecherche']);
-        var_dump($_POST);
         require("../vues/view_search.php");
         break;
     
