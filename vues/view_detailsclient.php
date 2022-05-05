@@ -11,7 +11,8 @@ $tabcom = CommandeMgr::getCommande($_GET['id']);
 ob_start();
 echo $msg?>
 
-<!-- <h1><?php echo $titre1 ?></h1> -->
+<!-- FORMULAIRE DE MODIFICATION CLIENT  -->
+
 <div class="contenu grid-container">
 
     <div id="grandediv">
@@ -58,6 +59,8 @@ echo $msg?>
     </fieldset>
 
     </div>
+
+<!-- CREATION D'UN TABLEAU DES COMMANDE DU CLIENT SELECTIONNE -->
 
     <div id="petitediv1">
     <table id="tabcom" class="table table-striped table-hover">

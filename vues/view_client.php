@@ -8,6 +8,7 @@ $titre = "Client";
 
 ob_start();?>
 
+<!-- CREATION DYNAMIQUEMENT DU TABLEAU DE CLIENT -->
 
 <h1 id="titre">Clients</h1>
 <div id="listclient">

@@ -22,11 +22,6 @@ $action = $_GET['action'];
 if (isset($_POST['action'])) 
 $action = $_POST['action'];   
 
-// var_dump($_POST);
-
-// if (isset($_GET['id']) AND (!isset($_POST['action']))) {
-    
-// }elseif (isset($_GET['CMD']) AND (!isset($_POST['action']))){
     
 
 switch($action){

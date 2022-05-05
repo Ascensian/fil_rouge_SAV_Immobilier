@@ -13,6 +13,8 @@ $tabclt = CommandeMgr::getListCommande();
 
 <h1>Commandes</h1>
 
+<!-- CREATION DYNAMIQUEMENT DU TABLEAU DE COMMANDE -->
+
 <div id="listcommande">
 
 
