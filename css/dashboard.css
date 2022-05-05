@@ -112,7 +112,7 @@ body {
 }
 
 .navbar .form-control {
-  padding: 1rem 35rem 1rem 1rem;
+  padding: 1rem 30rem 1rem 1rem;
   border-width: 0;
   border-radius: 0;
 }
@@ -146,6 +146,11 @@ body {
     top: 5rem;
   }
 }
+
+#divmsgErreur{
+  display: block;
+}
+
 
 
 

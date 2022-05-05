@@ -14,6 +14,7 @@
 </header>
 
 <body>
+
     <section>
         <div class="row" id="head"></div>
         <div class="container" id="test">
@@ -40,7 +41,7 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block" name="action" id="dashboard" value="dashboard">Connexion</button>
                         </div>
                     </form>
-                    <div>
+                    <div id="divmsgErreur">
                         <?php echo $msgErreur ?>
                     </div>
                 </div>

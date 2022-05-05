@@ -1,5 +1,7 @@
 var menu = document.getElementById("selection");
 var change = document.getElementsByClassName("btn1");
+var inputIdentifiant = document.getElementById("identifiant");
+var inputMDP = document.getElementById("mdp");
 
 for(let list of change){
 
@@ -17,4 +19,11 @@ list.addEventListener("click", function(){
 //         menu.appenChild(change);
 //         }
 // }
+inputIdentifiant.addEventListener("focusin", function(){
+        document.getElementById("divmsgErreur").style.display="none";
+});
+
+inputMDP.addEventListener("focusin", function(){
+        document.getElementById("divmsgErreur").style.display="none";
+});
 

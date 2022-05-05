@@ -42,12 +42,19 @@
 
     <!-- SEARCH FIELD  -->
 
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-
+    <input class="form-control form-control-dark w-30" type="text" placeholder="Search" aria-label="Search" id="barreRecherche">
 
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?></a>
+        <!-- <a class="nav-link px-3" href="#"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?></a> -->
+        <form action="<?php if ($_SESSION["index"] == 1) {
+                        echo "index.php";
+                      } else {
+                        echo "../index.php";
+                      }
+                      ?>" method="post">
+          <button type="submit" class="btn btn-danger" name="action" value="deconnexion">Déconnexion</button>
+        </form>
       </div>
     </div>
 
@@ -61,6 +68,17 @@
         <div class="position-sticky pt-3">
           <?php if ($_SESSION["role"] != "ADMIN") { ?>
             <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="<?php
+                                          if ($_SESSION["index"] == 1) {
+                                            echo "index.php";
+                                          } else {
+                                            echo "../index.php";
+                                          } ?>?action=profileUser">
+                  <span data-feather="bar-chart-2"></span>
+                  <?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?>
+                </a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link active" id="dashboard" aria-current="page" href="<?php
                                                                                     if ($_SESSION["index"] == 1) {
@@ -131,7 +149,6 @@
                   Recherche personnalisée
                 </a>
               </li>
-
 
             </ul>
           <?php } ?>

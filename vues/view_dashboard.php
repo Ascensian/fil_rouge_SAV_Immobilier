@@ -4,7 +4,9 @@ $titre = "Tableau de Bord";
 
 
 
-ob_start(); ?>
+ob_start();
+// var_dump($_SESSION); 
+?>
 
 <h1>Tableau de bord</h1>
 

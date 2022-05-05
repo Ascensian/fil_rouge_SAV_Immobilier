@@ -8,13 +8,25 @@ session_start();
 
 $action = "connexion";
 $msgErreur = "";
-if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
-    $_SESSION = array();
+// if ($action == "connexion" and !isset($_POST['action']) and !isset($_GET['action'])) {
+//     $_SESSION = array();
+// }
+
+if (isset($_SESSION["msgErreur"]) and strlen($_SESSION["msgErreur"]) > 1) {
+    $msgErreur = $_SESSION["msgErreur"];
+    $_SESSION["msgErreur"] = "";
 }
 if (isset($_POST['action']) and isset($_SESSION)) {
     if ($_POST['action'] == "dashboard") {
         try {
             $compte = ConnexionMgr::controleconnexion($_POST["identifiant"], $_POST["mdp"]);
+            try {
+                if (!isset($compte[0]["idEmploye"]) and !isset($compte[0]["RoleEmploye"])) {
+                    throw new Exception("Erreur d'identifiant et de mot de passe");
+                }
+            } catch (Exception $e) {
+                $msgErreur = $e->getMessage();
+            }
             $_SESSION["id"] = $compte[0]["idEmploye"];
             $_SESSION["nom"] = $compte[0]["NomEmploye"];
             $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
@@ -24,6 +36,8 @@ if (isset($_POST['action']) and isset($_SESSION)) {
         } catch (ConnexionMgrException $e) {
             $msgErreur = $e->getMessage();
         }
+    } else {
+        $action = $_POST['action'];
     }
 }
 if (isset($_GET['action']) and isset($_SESSION["role"])) {
@@ -56,5 +70,14 @@ switch ($action) {
         break;
     case "recherche":
         require("vues/view_advancedResearch.php");
+        break;
+    case "deconnexion":
+        if (isset($_SESSION["id"]) and isset($_SESSION["role"])) {
+            unset($_SESSION["id"]);
+            unset($_SESSION["role"]);
+            unset($_SESSION["nom"]);
+            unset($_SESSION["prenom"]);
+        }
+        header("Refresh:0; url = index.php");
         break;
 }
