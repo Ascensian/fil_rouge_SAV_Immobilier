@@ -66,92 +66,93 @@
     <div class="row">
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">
-          <?php if ($_SESSION["role"] != "ADMIN") { ?>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link" href="<?php
-                                          if ($_SESSION["index"] == 1) {
-                                            echo "index.php";
-                                          } else {
-                                            echo "../index.php";
-                                          } ?>?action=profileUser">
-                  <span data-feather="bar-chart-2"></span>
-                  <?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" id="dashboard" aria-current="page" href="<?php
-                                                                                    if ($_SESSION["index"] == 1) {
-                                                                                      echo "index.php";
-                                                                                    } else {
-                                                                                      echo "../index.php";
-                                                                                    } ?>?action=dashboard">
 
-                  <span data-feather="home"></span>
-                  Tableau de bord
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php
-                                          if ($_SESSION["index"] == 1) {
-                                            echo "index.php";
-                                          } else {
-                                            echo "../index.php";
-                                          } ?>?action=commande">
-                  <span data-feather="file"></span>
-                  Commandes
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php
-                                          if ($_SESSION["index"] == 1) {
-                                            echo "index.php";
-                                          } else {
-                                            echo "../index.php";
-                                          } ?>?action=ticket">
-                  <span data-feather="shopping-cart"></span>
-                  Ticket SAV
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php
-                                          if ($_SESSION["index"] == 1) {
-                                            echo "index.php";
-                                          } else {
-                                            echo "../index.php";
-                                          } ?>?action=client">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=profileUser">
+                <span data-feather="bar-chart-2"></span>
+                <?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?>
+              </a>
+              <?php if ($_SESSION["role"] != "ADMIN") { ?>s
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="dashboard" aria-current="page" href="<?php
+                                                                                  if ($_SESSION["index"] == 1) {
+                                                                                    echo "index.php";
+                                                                                  } else {
+                                                                                    echo "../index.php";
+                                                                                  } ?>?action=dashboard">
 
-                  <span data-feather="users"></span>
-                  Client
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php
-                                          if ($_SESSION["index"] == 1) {
-                                            echo "index.php";
-                                          } else {
-                                            echo "../index.php";
-                                          } ?>?action=article">
-                  <span data-feather="bar-chart-2"></span>
-                  Article
-                </a>
-              </li>
+                <span data-feather="home"></span>
+                Tableau de bord
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=commande">
+                <span data-feather="file"></span>
+                Commandes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=ticket">
+                <span data-feather="shopping-cart"></span>
+                Ticket SAV
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=client">
+
+                <span data-feather="users"></span>
+                Client
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=article">
+                <span data-feather="bar-chart-2"></span>
+                Article
+              </a>
+            </li>
 
 
-              <li class="nav-item">
-                <a class="nav-link" href="<?php
-                                          if ($_SESSION["index"] == 1) {
-                                            echo "index.php";
-                                          } else {
-                                            echo "../index.php";
-                                          } ?>?action=recherche">
-                  <span data-feather="bar-chart-2"></span>
-                  Recherche personnalisée
-                </a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php
+                                        if ($_SESSION["index"] == 1) {
+                                          echo "index.php";
+                                        } else {
+                                          echo "../index.php";
+                                        } ?>?action=recherche">
+                <span data-feather="bar-chart-2"></span>
+                Recherche personnalisée
+              </a>
+            </li>
 
-            </ul>
-          <?php } ?>
+          </ul>
+        <?php } ?>
         </div>
       </nav>
       <div class="contenu">

@@ -34,21 +34,39 @@ switch ($action) {
         require("vues/view_connexion.php");
         break;
     case "dashboard": // se lance quand on a le bon mot de passe afin d'achiver le dashboard
+        if ($_SESSION["role"] == "ADMIN") {
+            header("Location:index.php?action=profileUser");
+        }
         require('vues/view_dashboard.php');
         break;
     case "commande":
+        if ($_SESSION["role"] == "ADMIN") {
+            header("Location:index.php?action=profileUser");
+        }
         require("vues/view_commande.php");
         break;
     case "ticket":
+        if ($_SESSION["role"] == "ADMIN") {
+            header("Location:index.php?action=profileUser");
+        }
         header("Refresh:0; url = controller/ticketController.php", false);
         break;
     case "client":
+        if ($_SESSION["role"] == "ADMIN") {
+            header("Location:index.php?action=profileUser");
+        }
         require("vues/view_client.php");
         break;
     case "article":
+        if ($_SESSION["role"] == "ADMIN") {
+            header("Location:index.php?action=profileUser");
+        }
         require("vues/view_article.php");
         break;
     case "recherche":
+        if ($_SESSION["role"] == "ADMIN") {
+            header("Location:index.php?action=profileUser");
+        }
         require("vues/view_advancedResearch.php");
         break;
     case "deconnexion":
@@ -70,7 +88,11 @@ switch ($action) {
                 $_SESSION["nom"] = $compte[0]["NomEmploye"];
                 $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
                 $_SESSION["role"] = $compte[0]["RoleEmploye"];
-                header("Location:index.php?action=dashboard");
+                if ($_SESSION["role"] == "ADMIN") {
+                    header("Location:index.php?action=profileUser");
+                } else {
+                    header("Location:index.php?action=dashboard");
+                }
             }
             try {
                 if (!isset($compte[0]["idEmploye"]) and !isset($compte[0]["RoleEmploye"])) {
@@ -92,6 +114,7 @@ switch ($action) {
         var_dump($_SESSION);
         break;
     case "profileUser":
+        $employe = employeMgr::getEmploye("root", "", $_SESSION["id"]);
         require("vues/view_profileUser.php");
         break;
 }
