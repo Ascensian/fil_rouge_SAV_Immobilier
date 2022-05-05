@@ -10,7 +10,6 @@ ob_start();?>
 
 
 <h1 id="titre">Clients</h1>
-<?php echo $msg; ?>
 <div id="listclient">
 
 <table class="table table-striped table-hover">
@@ -29,7 +28,7 @@ ob_start();?>
     <?php
 
     foreach($tabclt as $key=>$value){
-        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $value['IdClient'] ?>'">
+        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $value['IdClient']?>&action=detailclient'">
            <th scope="row"><?php echo $value["IdClient"]?></th>
             <td><?php echo $value["NomClient"]?></td>
             <td><?php echo $value["PrenomClient"]?></td>

@@ -72,7 +72,7 @@ echo $msg?>
   <tbody>
     <?php
     foreach($tabcom as $key=>$value){ 
-        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?CMD=<?php echo $value['IdCommande'] ?>'">
+        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF']?>?CMD=<?php echo $value['IdCommande']?>&id=<?php echo $_GET['id']?>&action=detailcomm'">
            <th scope="row"><?php echo $value["IdCommande"]?></th>
             <td><?php echo $value["EtatCommande"]?></td>
             <td><?php echo $value["DateCommande"]?></td>

@@ -31,7 +31,7 @@ $tabclt = CommandeMgr::getListCommande();
     <?php
 
     foreach($tabclt as $key=>$value){ 
-        ?><tr onclick="document.location.href='<?php echo $_SERVER['PHP_SELF'] ?>?CMD=<?php echo $value['IdCommande'] ?>'">
+        ?><tr onclick="window.location.href='controlerclient.php?action=detailcomm&CMD=<?php echo $value['IdCommande'] ?>&id=<?= $value['IdClient']?>'">
            <th scope="row"><?php echo $value["IdCommande"]?></th>
            <th scope="row"><?php echo $value["IdClient"]?></th>
             <td><?php echo $value["EtatCommande"]?></td>
