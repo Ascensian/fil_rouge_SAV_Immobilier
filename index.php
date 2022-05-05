@@ -96,7 +96,7 @@ switch ($action) {
                 $_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
                 $_SESSION["role"] = $compte[0]["RoleEmploye"];
                 // Permet de définir les définir le user et mot de passe pour accéder à la base de donnée en fonction de son role 
-                $tParam = parse_ini_file("../param/roleuser.ini", true);
+                $tParam = parse_ini_file("param/roleuser.ini", true);
                 if ($_SESSION["role"] == "SAV") {
                     extract($tParam["SAV"]);
                     $_SESSION["userRole"] = $userSAV;
