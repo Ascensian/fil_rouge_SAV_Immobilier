@@ -42,7 +42,7 @@
 
   <!-- SEARCH FIELD  -->
     <form action="../controller/rechercheController.php" method="post">
-      <input type="text">
+      <input type="text" name="valeurRecherche">
       <button type="submit" name="action" value="query">GO</button>
     </form>
 

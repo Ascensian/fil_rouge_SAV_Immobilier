@@ -15,15 +15,23 @@ if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 }
 
-if (isset($_POST["action"]) == "query") {
-    $action = $_POST["action"];
+if (isset($_POST["action"])) {
+    if (isset($_POST["action"]) == "query") {
+        $action = $_POST["action"];
 }
+    
+}
+
+
 
 
 switch ($action) {
     case "query":
-        echo "couc";
-        var_dump(rechercheMGR::rechercheNomClient("Adn"));
+        
+        $tabClient = rechercheMGR::rechercheNomClient($_POST['valeurRecherche']);
+        $tabCommande = rechercheMGR::rechercheNumCommande($_POST['valeurRecherche']);
+        $tabTicket = rechercheMGR::rechercheLibTicket($_POST['valeurRecherche']);
+        var_dump($_POST);
         require("../vues/view_search.php");
         break;
     
