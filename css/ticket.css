@@ -13,6 +13,8 @@
 
 }
 
+
+
 .title{
     margin-left: 1.5vh; 
 }
@@ -33,7 +35,7 @@ th, tr{
 /* ticket détail */
 
 form{
-    width : 20%;
+    width : 100%;
 }
 
 #textehistocode{
@@ -41,5 +43,7 @@ form{
 }
 
 #tableTicket{
-    width : 100%;
+    margin-left: 4% !important;
+    width : 100% !important;
+    overflow: scroll;
 }

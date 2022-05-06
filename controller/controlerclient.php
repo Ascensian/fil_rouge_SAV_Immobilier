@@ -13,10 +13,6 @@ if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deco
 $action = "client";
 $msg = "";
 
-if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
-    $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
-    header("Refresh:0; url = ../index.php?action=connexion", false);}
-
 
 if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
@@ -30,7 +26,7 @@ if (isset($_GET['action']))
 $action = $_GET['action'];   
         
 if (isset($_POST['action'])) 
-$action = $_POST['action'];   
+$action = $_POST['action'];
     
 
 switch($action){

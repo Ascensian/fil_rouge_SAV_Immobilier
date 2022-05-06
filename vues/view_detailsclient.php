@@ -12,10 +12,10 @@ ob_start();
 echo $msg?>
 
 <!-- <h1><?php echo $titre1 ?></h1> -->
-<div class="contenu grid-container">
+<div id="contenudetailclient" class="contenu grid-container">
 
     <div id="grandediv">
-        <form action="controlerclient.php" method="GET">
+        <form id="formclient"action="controlerclient.php" method="GET">
             <fieldset id="formulaireclient">
                 <h1 id="detail">Détail Client</h1>
                 <div id="detailclient" class="col-7">
