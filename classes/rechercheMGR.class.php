@@ -4,7 +4,7 @@ class rechercheMGR {
     
     public static function rechercheNomClient(string $nom) {
         
-        $requete = "SELECT NomClient, PrenomClient FROM client WHERE NomClient LIKE '%" . $nom ."%'";
+        $requete = "SELECT IdClient, NomClient, PrenomClient FROM client WHERE NomClient LIKE '%" . $nom ."%'";
         $resultat = Connexion::getConnexion("root", "")->prepare($requete);
         $resultat->execute();
         $tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
@@ -12,7 +12,7 @@ class rechercheMGR {
     }
 
     public static function rechercheNumCommande(string $numCom) {
-        $requete = "SELECT IdCommande, EtatCommande from commande WHERE IdCommande LIKE '%" . $numCom ."%'";
+        $requete = "SELECT IdCommande, EtatCommande, IdClient from commande WHERE IdCommande LIKE '%" . $numCom ."%'";
         $resultat = Connexion::getConnexion("root", "")->prepare($requete);
         $resultat->execute();
         $tab = $resultat->fetchAll(PDO::FETCH_ASSOC);

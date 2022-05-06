@@ -25,7 +25,7 @@ ob_start();
                     <tr>
                         <td><?php echo $value["NomClient"] ?></td>
                         <td><?php echo $value["PrenomClient"] ?></td>
-                        <td><a href="">Edit</a></td>
+                        <td><a href="../controller/controlerclient.php?id=<?php echo $value['IdClient'] ?>&action=detailclient">Edit</a></td>
                     </tr>
                     <?php
                 }
@@ -53,7 +53,7 @@ ob_start();
                     <tr>
                         <td><?php echo $value["IdCommande"] ?></td>
                         <td><?php echo $value["EtatCommande"] ?></td>
-                        <td><a href="">Edit</a></td>
+                        <td><a href="../controller/controlerclient.php?action=detailcomm&CMD=<?php echo $value['IdCommande'] ?>&id=<?= $value['IdClient'] ?>">Edit</a></td>
                     </tr>
                     <?php
                 }
@@ -81,7 +81,7 @@ ob_start();
                     <tr>
                         <td><?php echo $value["IdTicketSAV"] ?></td>
                         <td><?php echo $value["ProbTicketSAV"] ?></td>
-                        <td><a href="">Edit</a></td>
+                        <td><a href="../controller/ticketController.php?id=<?php echo $value["IdTicketSAV"] ?>&action=detailsTicket">Edit</a></td>
                     </tr>
                     <?php
                 }
