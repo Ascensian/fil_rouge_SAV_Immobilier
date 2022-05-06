@@ -42,7 +42,9 @@ ob_start();
                 <tr>
                     <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $infoticket["IdTicketSAV"] ?>&action=detailsTicket"><?= $infoticket["IdTicketSAV"] ?></a></th>
                     <td><?= $infoticket["DateTicketSAV"] ?></td>
-                    <td><?= $infoticket["IdCommande"] ?></td>
+                    <td><?php $clientCommande = CommandeMgr::getIdClientByIdCommande($_SESSION["userRole"], $_SESSION["mdpRole"], $infoticket["IdCommande"]); ?>
+                        <a href="<?php echo "controlerclient.php?CMD=" . $infoticket["IdCommande"] . "&id=" . $clientCommande[0]["IdClient"] . "&action=detailcomm" ?>"><?= $infoticket["IdCommande"]  ?><a>
+                    </td>
                     <td><?php
                         if ($infoticket["IdArticle"] == NULL) {
                             echo "La commande est concernée";
@@ -58,7 +60,7 @@ ob_start();
 } else {
     // $ticket = getTickets($action);
 ?>
-    <table class="table table-bordered table-striped " id="tableTicketDetail">
+    <table class=" table table-bordered table-striped " id=" tableTicketDetail">
         <thead>
             <tr class="bg-primary">
                 <th scope="col">Numéro de ticket</th>

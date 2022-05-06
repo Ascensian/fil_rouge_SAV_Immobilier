@@ -5,8 +5,13 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 
-$action= "client";
-$msg =""; 
+if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
+    $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
+    header("Refresh:0; url = ../index.php?action=connexion", false);
+}
+
+$action = "client";
+$msg = "";
 
 if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
@@ -16,20 +21,13 @@ if (!isset($_SESSION["index"])) {
 
 
 
-if (isset($_GET['action'])) 
-$action = $_GET['action'];   
-        
-if (isset($_POST['action'])) 
-$action = $_POST['action'];   
+if (isset($_GET['action']))
+    $action = $_GET['action'];
 
-// var_dump($_POST);
+if (isset($_POST['action']))
+    $action = $_POST['action'];
 
-// if (isset($_GET['id']) AND (!isset($_POST['action']))) {
-    
-// }elseif (isset($_GET['CMD']) AND (!isset($_POST['action']))){
-    
-
-switch($action){
+switch ($action) {
     case "client":
         $tabclt = ClientMgr::getListClient();
         require("../vues/view_client.php");
@@ -37,22 +35,32 @@ switch($action){
     case "creation":
         // var_dump($_POST)
         $listempl = EmployeMgr::getListEmploye();
-        $crea = CommandeMgr::creationTicket($_POST['probleme'], $_POST['commentaire'],
-                                                        $_POST['IdArticle'],$_POST['employe'], $_POST['CMD']);
-                                                        $client = ClientMgr::getClient($_SESSION["getIdClient"]);
+        $crea = CommandeMgr::creationTicket(
+            $_POST['probleme'],
+            $_POST['commentaire'],
+            $_POST['IdArticle'],
+            $_POST['employe'],
+            $_POST['CMD']
+        );
+        $client = ClientMgr::getClient($_SESSION["getIdClient"]);
         $tabart = ArticleMgr::getArticleCommande($_SESSION["getCommande"]);
-        require ("../vues/view_detailcommande.php");   
+        require("../vues/view_detailcommande.php");
         break;
     case "modif":
-        $modif =  ClientMgr::modifClient($_GET['id'], $_GET['inputAddress'], 
-        $_GET['inputZip'], $_GET['inputCity'], $_GET['inputEmail']);
+        $modif =  ClientMgr::modifClient(
+            $_GET['id'],
+            $_GET['inputAddress'],
+            $_GET['inputZip'],
+            $_GET['inputCity'],
+            $_GET['inputEmail']
+        );
         $tabclt = ClientMgr::getListClient();
         $action = $_GET['action'];
         $_SESSION["post"] = $action;
         $GET[$action] = "client";
         require("../vues/view_client.php");
         break;
-    case "detailcomm" : 
+    case "detailcomm":
         $listempl = EmployeMgr::getListEmploye();
         $client = ClientMgr::getClient($_GET['id']);
         $_SESSION["getIdClient"] = $_GET['id'];
@@ -66,5 +74,4 @@ switch($action){
         $tabcom = CommandeMgr::getCommande($_GET['id']);
         require("../vues/view_detailsclient.php");
         break;
-    }
-?>
+}
