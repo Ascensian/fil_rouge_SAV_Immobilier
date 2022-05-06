@@ -10,9 +10,30 @@ ob_start();
 
     <div>
         <h5>Client(s) trouvé(s) : '<?= count($tabClient) ?>'</h5>
-        <?php foreach ($tabClient as $key => $value) 
-             echo $value["NomClient"] . " " . $value["PrenomClient"];
-        ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <?php foreach ($tabClient as $key => $value) {
+                    ?>
+                    <tr>
+                        <td><?php echo $value["NomClient"] ?></td>
+                        <td><?php echo $value["PrenomClient"] ?></td>
+                        <td><a href="">Edit</a></td>
+                    </tr>
+                    <?php
+                }
+             ?>
+                
+            </tbody>
+        </table>
+        
     </div>
 
     <div>

@@ -41,11 +41,22 @@
     </div>
 
   <!-- SEARCH FIELD  -->
-    <form action="../controller/rechercheController.php" method="post">
+  
+    <form action="../controller/rechercheController?query=<?php 
+                                                            if(isset($_POST["valeurRecherche"])) {
+                                                                if(!isset($_POST["valeurRecherche"])) {
+                                                                  // echo $_POST["valeurRecherche"];
+                                                                  echo "coucou";
+                                                                } else if (isset($_POST["valeurRecherche"])) {
+                                                                  echo $_POST["valeurRecherche"];
+                                                                  // echo "papa";
+                                                                  }
+                                                                }?>" method="post">
       <input type="text" name="valeurRecherche">
-      <button type="submit" name="action" value="query">GO</button>
+      <button type="submit" name="action" value="recherche">GO</button>
     </form>
-
+    
+                                                                
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom'] ?></a>
@@ -120,17 +131,7 @@
             </li>
 
 
-            <li class="nav-item">
-              <a class="nav-link" href="<?php
-                                        if ($_SESSION["index"] == 1) {
-                                          echo "index.php";
-                                        } else {
-                                          echo "../index.php";
-                                        } ?>?action=recherche">
-                <span data-feather="bar-chart-2"></span>
-                Recherche personnalisée
-              </a>
-            </li>
+            
 
 
           </ul>
