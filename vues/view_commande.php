@@ -16,7 +16,7 @@ $tabclt = CommandeMgr::getListCommande($_SESSION["userRole"],  $_SESSION["mdpRol
 <div id="listcommande">
 
 
-  <table class="table table-striped table-hover">
+  <table id=tablecommande class="table table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">ID commande</th>

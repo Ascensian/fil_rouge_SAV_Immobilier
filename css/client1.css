@@ -11,8 +11,8 @@
 
 
 #tabarticle{
-    width: 40% !important;
-    margin-left: 11%;
+    width: 100% !important;
+    margin-left: 5%;
     margin-top: 2%;
 }
 #tabcom{
@@ -20,9 +20,7 @@
     height: auto !important;
 }
   
-h1{
-    margin-left: 11%;
-}
+
 
 #detail{
     margin-top: -4% !important;
@@ -37,9 +35,7 @@ titre{
     margin-left: 11% !important;
 }
 
-form{
-    height: 150%;
-}
+
 
   fieldset{
   padding: 3%;
@@ -59,16 +55,18 @@ form{
       border: solid black 1px;
       border-radius: 20px 0px 0px 20px;
       background-color: rgba(170, 234, 253, 0.945);
-      display: grid;
-      width: 100%;
+      display: flex;
+      width: 250%;
+    margin-left: -10%;
       grid-area: 1 / 1 / 2 / 4;
   }
 
   #petitediv1{
       border: solid black 1px;
-      display: grid;
+      display: flex;
       grid-area: 1 / 4 / 2 / 5; 
       width: 100%;
+    margin-left: 118%;
       overflow : auto;
   }
 

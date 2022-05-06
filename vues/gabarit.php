@@ -28,25 +28,13 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary" href="" id="selection"></button>
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="btnselect" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="visually-hidden">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><button class="dropdown-item btn1" type="button">Article</button></li>
-        <li><button class="dropdown-item btn1" type="button">Pièce</button></li>
-        <li><button class="dropdown-item btn1" type="button">Commande</button></li>
-        <li><button class="dropdown-item btn1" type="button">Ticket</button></li>
-        <li><button class="dropdown-item btn1" type="button">Client</button></li>
-      </ul>
-    </div>
+
 
     <!-- SEARCH FIELD  -->
 
-    <form action="../controller/rechercheController" method="post">
-      <input type="text" name="valeurRecherche">
-      <button type="submit" name="action" value="recherche">GO</button>
+    <form id="barrerecherche" action="../controller/rechercheController" method="post">
+      <input type="text" class="w-75" placeholder="Recherche" name="valeurRecherche">
+      <button type="submit"  name="action" value="recherche">Recherche</button>
     </form>
 
 
