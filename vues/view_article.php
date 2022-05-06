@@ -7,7 +7,7 @@ ob_start(); ?>
 <h1>Articles : <?= $numberArticle['COUNT(*)'] ?></h1>
 
 <?php
-$tabArticles = articleMgr::getAllArticles();
+$tabArticles = articleMgr::getAllArticles($_SESSION["userRole"],  $_SESSION["mdpRole"]);
 // var_dump($tabArticles);
 ?>
 
