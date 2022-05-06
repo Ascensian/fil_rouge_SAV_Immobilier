@@ -8,6 +8,11 @@ session_start();
 $action= "client";
 $msg =""; 
 
+if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
+    $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
+    header("Refresh:0; url = ../index.php?action=connexion", false);}
+
+
 if (!isset($_SESSION["index"])) {
     $_SESSION["index"] = 0;
 } else if ($_SESSION["index"] == 1) {
@@ -21,32 +26,26 @@ $action = $_GET['action'];
         
 if (isset($_POST['action'])) 
 $action = $_POST['action'];   
-
-// var_dump($_POST);
-
-// if (isset($_GET['id']) AND (!isset($_POST['action']))) {
-    
-// }elseif (isset($_GET['CMD']) AND (!isset($_POST['action']))){
     
 
 switch($action){
     case "client":
-        $tabclt = ClientMgr::getListClient();
+        $tabclt = ClientMgr::getListClient($_SESSION["userRole"],  $_SESSION["mdpRole"],);
         require("../vues/view_client.php");
         break;
     case "creation":
         // var_dump($_POST)
         $listempl = EmployeMgr::getListEmploye();
-        $crea = CommandeMgr::creationTicket($_POST['probleme'], $_POST['commentaire'],
+        $crea = CommandeMgr::creationTicket($_SESSION["userRole"],  $_SESSION["mdpRole"],$_POST['probleme'], $_POST['commentaire'],
                                                         $_POST['IdArticle'],$_POST['employe'], $_POST['CMD']);
-                                                        $client = ClientMgr::getClient($_SESSION["getIdClient"]);
-        $tabart = ArticleMgr::getArticleCommande($_SESSION["getCommande"]);
+                                                        $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_SESSION["getIdClient"]);
+        $tabart = ArticleMgr::getArticleCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_SESSION["getCommande"]);
         require ("../vues/view_detailcommande.php");   
         break;
     case "modif":
-        $modif =  ClientMgr::modifClient($_GET['id'], $_GET['inputAddress'], 
+        $modif =  ClientMgr::modifClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id'], $_GET['inputAddress'], 
         $_GET['inputZip'], $_GET['inputCity'], $_GET['inputEmail']);
-        $tabclt = ClientMgr::getListClient();
+        $tabclt = ClientMgr::getListClient($_SESSION["userRole"],  $_SESSION["mdpRole"],);
         $action = $_GET['action'];
         $_SESSION["post"] = $action;
         $GET[$action] = "client";
@@ -54,7 +53,7 @@ switch($action){
         break;
     case "detailcomm" : 
         $listempl = EmployeMgr::getListEmploye();
-        $client = ClientMgr::getClient($_GET['id']);
+        $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
         $_SESSION["getIdClient"] = $_GET['id'];
         $tabart = ArticleMgr::getArticleCommande($_GET['CMD']);
         $_SESSION["getCommande"] = $_GET['CMD'];
@@ -62,8 +61,8 @@ switch($action){
         break;
     case "detailclient":
         $id = $_GET["id"];
-        $client = ClientMgr::getClient($_GET['id']);
-        $tabcom = CommandeMgr::getCommande($_GET['id']);
+        $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
+        $tabcom = CommandeMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
         require("../vues/view_detailsclient.php");
         break;
     }

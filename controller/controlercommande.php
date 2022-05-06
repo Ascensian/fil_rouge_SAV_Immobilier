@@ -5,6 +5,11 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 
+if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
+    $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
+    header("Refresh:0; url = ../index.php?action=connexion", false);}
+
+
 $action= "commande";
 
 if (!isset($_SESSION["index"])) {
@@ -26,7 +31,7 @@ if (isset($_GET['id']) AND (!isset($_POST['action']))) {
 }else{
 switch($action){
     case "commande":
-        $tabclt = CommandeMgr::getListCommande();
+        $tabclt = CommandeMgr::getListCommande($_SESSION["userRole"],  $_SESSION["mdpRole"]);
         require("../vues/view_commande.php");
         break;
     }
