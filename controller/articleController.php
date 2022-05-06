@@ -23,12 +23,12 @@ if (isset($_POST["action"]) == 'ajoutArticle') {
 
 switch ($action) {
     case "article" :
-        $numberArticle = articleMgr::getNumberArticles();
+        $numberArticle = articleMgr::getNumberArticles($_SESSION["userRole"],  $_SESSION["mdpRole"]);
         require('../vues/view_article.php');
         break;
     case "ajoutArticle" :
-        $numberArticle = articleMgr::getNumberArticles();
-        articleMgr::addArticle($_POST['idArticle'], $_POST['libArticle'], $_POST['prixUnitaire'], $_POST['stock']);
+        $numberArticle = articleMgr::getNumberArticles($_SESSION["userRole"],  $_SESSION["mdpRole"]);
+        articleMgr::addArticle($_SESSION["userRole"],  $_SESSION["mdpRole"],$_POST['idArticle'], $_POST['libArticle'], $_POST['prixUnitaire'], $_POST['stock']);
         require('../vues/view_article.php');
         break;
     

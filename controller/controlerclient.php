@@ -35,12 +35,12 @@ $action = $_POST['action'];
 
 switch($action){
     case "client":
-        $tabclt = ClientMgr::getListClient($_SESSION["userRole"],  $_SESSION["mdpRole"],);
+        $tabclt = ClientMgr::getListClient($_SESSION["userRole"],  $_SESSION["mdpRole"]);
         require("../vues/view_client.php");
         break;
     case "creation":
         // var_dump($_POST)
-        $listempl = EmployeMgr::getListEmploye();
+        $listempl = EmployeMgr::getListEmploye($_SESSION["userRole"],  $_SESSION["mdpRole"]);
         $crea = CommandeMgr::creationTicket($_SESSION["userRole"],  $_SESSION["mdpRole"],$_POST['probleme'], $_POST['commentaire'],
                                                         $_POST['IdArticle'],$_POST['employe'], $_POST['CMD']);
         $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_SESSION["getIdClient"]);
@@ -57,10 +57,10 @@ switch($action){
         require("../vues/view_client.php");
         break;
     case "detailcomm":
-        $listempl = EmployeMgr::getListEmploye();
+        $listempl = EmployeMgr::getListEmploye($_SESSION["userRole"],  $_SESSION["mdpRole"]);
         $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
         $_SESSION["getIdClient"] = $_GET['id'];
-        $tabart = ArticleMgr::getArticleCommande($_GET['CMD']);
+        $tabart = ArticleMgr::getArticleCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['CMD']);
         $_SESSION["getCommande"] = $_GET['CMD'];
         require("../vues/view_detailcommande.php");
         break;

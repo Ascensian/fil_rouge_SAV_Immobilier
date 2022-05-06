@@ -32,7 +32,7 @@ ob_start(); ?>
       // CREATION DYNAMIQUEMENT DES LIGNES DU TABLEAU ARTICLE 
 
       foreach ($tabart as $key => $value) {
-        $test = ArticleMgr::getTicketArticle($value["IdArticle"], $_SESSION["getCommande"]);
+        $test = ArticleMgr::getTicketArticle($_SESSION["userRole"],  $_SESSION["mdpRole"],$value["IdArticle"], $_SESSION["getCommande"]);
 
       ?><tr id=<?php echo $key ?>>
 
@@ -92,7 +92,7 @@ ob_start(); ?>
                     <select name="employe" id="employe" require>
                       <option value="">--Choisir un Technicien--</option>
                       <?php foreach ($listempl as $key => $value) {
-                        $listempl = EmployeMgr::getListEmploye(); ?>
+                        $listempl = EmployeMgr::getListEmploye($_SESSION["userRole"],  $_SESSION["mdpRole"]); ?>
                         <option value="<?php echo $listempl[$key]['IdEmploye']; ?>"><?php echo $value['IdEmploye']; ?> - <?php echo $value['NomEmploye'] . " " . $value['PrenomEmploye'] ?></option>
                       <?php } ?>
                     </select>

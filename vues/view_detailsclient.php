@@ -5,8 +5,8 @@ spl_autoload_register(function ($classe) {
 });
 
 $titre = "Details";
-$client = ClientMgr::getClient($_GET['id']);
-$tabcom = CommandeMgr::getCommande($_GET['id']);
+$client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
+$tabcom = CommandeMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
 -
 ob_start();
 echo $msg?>

@@ -8,7 +8,7 @@ $titre = "Commande";
 
 ob_start(); ?>
 <?php
-$tabclt = CommandeMgr::getListCommande();
+$tabclt = CommandeMgr::getListCommande($_SESSION["userRole"],  $_SESSION["mdpRole"]);
 ?>
 
 <h1>Commandes</h1>
