@@ -7,6 +7,7 @@ class CommandeMgr
         $sql = "SELECT * FROM commande";
 
         $resultset = Connexion::getConnexion($user, $password)->query($sql);
+
         $records = $resultset->fetchAll($choix);
         $resultset->closeCursor();
         Connexion::disconnect();
