@@ -36,4 +36,3 @@ switch($action){
         break;
     }
 }
-?>

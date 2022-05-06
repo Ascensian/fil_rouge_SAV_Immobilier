@@ -5,8 +5,13 @@ spl_autoload_register(function ($classe) {
 
 session_start();
 
-$action= "client";
-$msg =""; 
+if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
+    $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
+    header("Refresh:0; url = ../index.php?action=connexion", false);
+}
+
+$action = "client";
+$msg = "";
 
 if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
     $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
@@ -38,7 +43,7 @@ switch($action){
         $listempl = EmployeMgr::getListEmploye();
         $crea = CommandeMgr::creationTicket($_SESSION["userRole"],  $_SESSION["mdpRole"],$_POST['probleme'], $_POST['commentaire'],
                                                         $_POST['IdArticle'],$_POST['employe'], $_POST['CMD']);
-                                                        $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_SESSION["getIdClient"]);
+        $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_SESSION["getIdClient"]);
         $tabart = ArticleMgr::getArticleCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_SESSION["getCommande"]);
         require ("../vues/view_detailcommande.php");   
         break;
@@ -51,7 +56,7 @@ switch($action){
         $GET[$action] = "client";
         require("../vues/view_client.php");
         break;
-    case "detailcomm" : 
+    case "detailcomm":
         $listempl = EmployeMgr::getListEmploye();
         $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
         $_SESSION["getIdClient"] = $_GET['id'];
@@ -65,5 +70,4 @@ switch($action){
         $tabcom = CommandeMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
         require("../vues/view_detailsclient.php");
         break;
-    }
-?>
+}
