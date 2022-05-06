@@ -48,7 +48,7 @@ switch ($action) {
         if ($_SESSION["role"] == "ADMIN") {
             header("Location:index.php?action=profileUser");
         }
-        header("Refresh:0; url = ../controler/controlercommande.php", false);
+        header("Refresh:0; url = ../controller/controlercommande.php", false);
         break;
     case "ticket": // Permet d'accéder au contrôleur liée aux tickets du SAV
         if ($_SESSION["role"] == "ADMIN") {
@@ -60,7 +60,7 @@ switch ($action) {
         if ($_SESSION["role"] == "ADMIN") {
             header("Location:index.php?action=profileUser");
         }
-        header("Refresh:0; url = ../controler/controlerclient.php", false);
+        header("Refresh:0; url = ../controller/controlerclient.php", false);
         break;
     case "article": // Permet d'accéder au catalogue des articles 
         if ($_SESSION["role"] == "ADMIN") {
