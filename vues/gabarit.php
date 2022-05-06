@@ -42,16 +42,7 @@
 
   <!-- SEARCH FIELD  -->
   
-    <form action="../controller/rechercheController?query=<?php 
-                                                            if(isset($_POST["valeurRecherche"])) {
-                                                                if(!isset($_POST["valeurRecherche"])) {
-                                                                  // echo $_POST["valeurRecherche"];
-                                                                  echo "coucou";
-                                                                } else if (isset($_POST["valeurRecherche"])) {
-                                                                  echo $_POST["valeurRecherche"];
-                                                                  // echo "papa";
-                                                                  }
-                                                                }?>" method="post">
+    <form action="../controller/rechercheController" method="post">
       <input type="text" name="valeurRecherche">
       <button type="submit" name="action" value="recherche">GO</button>
     </form>

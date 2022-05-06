@@ -27,6 +27,7 @@ if(isset($_POST["valeurRecherche"]) or isset($_GET['query'])) {
     $tabClient = rechercheMGR::rechercheNomClient($_POST['valeurRecherche']);
     $tabCommande = rechercheMGR::rechercheNumCommande($_POST['valeurRecherche']);
     $tabTicket = rechercheMGR::rechercheLibTicket($_POST['valeurRecherche']);
+    
 }
 
 
