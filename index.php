@@ -66,13 +66,13 @@ switch ($action) {
         if ($_SESSION["role"] == "ADMIN") {
             header("Location:index.php?action=profileUser");
         }
-        require("vues/view_article.php");
+        header("Refresh:0; url = controller/articleController.php", false);
         break;
     case "recherche": // Permet d'accéder à la partie de recherche en fonction de ses besoins 
         if ($_SESSION["role"] == "ADMIN") {
             header("Location:index.php?action=profileUser");
         }
-        require("vues/view_advancedResearch.php");
+        header("Refresh:0; url = controller/rechercheController.php", false);
         break;
     case "deconnexion": // Action permettant à l'utilisateur de mettre fin à sa session sur l'application
         if (isset($_SESSION["id"]) and isset($_SESSION["role"])) {
