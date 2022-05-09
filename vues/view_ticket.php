@@ -1,7 +1,7 @@
 <?php
-/*spl_autoload_register(function ($classe) {
+spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
-});*/
+});
 
 
 $titre = "Ticket";
@@ -17,8 +17,6 @@ ob_start();
 
 
 <br>
-<?php var_dump($clientCommande);
-var_dump($ticket) ?>
 
 <h2 class="title">Tickets SAV</h2>
 <!-- <br>
@@ -46,7 +44,7 @@ var_dump($ticket) ?>
                 <tr>
                     <th scope="row"><a href="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $infoticket["IdTicketSAV"] ?>&action=detailsTicket"><?= $infoticket["IdTicketSAV"] ?></a></th>
                     <td><?= $infoticket["DateTicketSAV"] ?></td>
-                    <td><?php //$clientCommande = CommandeMgr::getIdClientByIdCommande($_SESSION["userRole"], $_SESSION["mdpRole"], $infoticket["IdCommande"]); ?>
+                    <td><?php $clientCommande = CommandeMgr::getIdClientByIdCommande($_SESSION["userRole"], $_SESSION["mdpRole"], $infoticket["IdCommande"]); ?>
                         <a href="<?php echo "controlerclient.php?CMD=" . $infoticket["IdCommande"] . "&id=" . $clientCommande[0]["IdClient"] . "&action=detailcomm" ?>"><?= $infoticket["IdCommande"]  ?><a>
                     </td>
                     <td><?php
