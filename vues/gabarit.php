@@ -43,7 +43,7 @@
 
     <!-- SEARCH FIELD  -->
 
-    <form id="barrerecherche" action="../controller/rechercheController" method="post">
+    <form id="barrerecherche" action="rechercheController.php" method="post">
       <input type="text" class="w-75" placeholder="Recherche" name="valeurRecherche">
       <button type="submit" name="action" value="recherche">Recherche</button>
     </form>

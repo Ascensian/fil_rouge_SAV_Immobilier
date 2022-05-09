@@ -1,5 +1,6 @@
 	<?php
-	
+
+
 
 	session_start();
 
@@ -7,7 +8,7 @@
 	$action = "connexion";
 	$msgErreur = "";
 
-//var_dump($_POST);
+	//var_dump($_POST);
 
 
 
@@ -33,8 +34,8 @@
 		// Si l'index existe dans la session, on l'incrémante à 1
 		$_SESSION["index"] = 1;
 	}
-//die("action");
-//header("Location:index.php?action=profileUser");
+	//die("action");
+	//header("Location:index.php?action=profileUser");
 
 	switch ($action) {
 		case "connexion": // Action par défaut qui envoie les utilisateurs sur la page de connexion pour poursuivre l'utilisation de l'application
@@ -87,7 +88,7 @@
 			header("Location:index.php");
 			break;
 		case "connexionval": // Action vérifiant les informations venant de la vue de connexion
-		require("classes/connexionMgr.class.php");
+			require("classes/connexionMgr.class.php");
 			try {
 				//permet d'empêcher le retour en arrière sur la session de l'utilisateur précédent mais aussi d'empêcher un utilisateur sans compte d'accéder aux pages
 				if (isset($_POST["seconnecter"])) {
@@ -97,7 +98,6 @@
 				if (isset($_POST["identifiant"]) and isset($_POST["mdp"]) or $_SESSION["deconnexion"] == 1) {
 
 					$compte = ConnexionMgr::controleconnexion($_POST["identifiant"], $_POST["mdp"]);
-var_dump($compte);
 					$_SESSION["id"] = $compte[0]["idEmploye"];
 					$_SESSION["nom"] = $compte[0]["NomEmploye"];
 					$_SESSION["prenom"] = $compte[0]["PrenomEmploye"];
@@ -120,7 +120,6 @@ var_dump($compte);
 						$_SESSION["mdpRole"] = $mdpHOT;
 					}
 					// Si l'utilisateur est un administrateur, on l'envoie sur une page d'accueil personnalisée
-//die("test2");
 					if ($_SESSION["role"] == "ADMIN") {
 						header("Location:index.php?action=profileUser");
 					} else {
@@ -147,7 +146,8 @@ var_dump($compte);
 			}
 			break;
 		case "profileUser": // Permet de voir ses données personnelles mais aussi de pouvoir changer son mot de passe
-			$employe = employeMgr::getEmploye("root", "", $_SESSION["id"]);
+			require_once("classes/employeMgr.class.php");
+			$employe = employeMgr::getEmploye($_SESSION["userRole"],  $_SESSION["mdpRole"], $_SESSION["id"]);
 			require("vues/view_profileUser.php");
 			break;
 	}
