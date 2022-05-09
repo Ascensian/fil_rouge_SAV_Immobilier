@@ -32,7 +32,7 @@ ob_start(); ?>
       // CREATION DYNAMIQUEMENT DES LIGNES DU TABLEAU ARTICLE 
 
       foreach ($tabart as $key => $value) {
-        $test = ArticleMgr::getTicketArticle($_SESSION["userRole"],  $_SESSION["mdpRole"],$value["IdArticle"], $_SESSION["getCommande"]);
+        $test = ArticleMgr::getTicketArticle($_SESSION["userRole"],  $_SESSION["mdpRole"], $value["IdArticle"], $_SESSION["getCommande"]);
 
       ?><tr id=<?php echo $key ?>>
 

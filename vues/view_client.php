@@ -1,8 +1,8 @@
 <?php
 
-spl_autoload_register(function ($classe) {
-  require "../classes/" . $classe . ".class.php";
-});
+// spl_autoload_register(function ($classe) {
+//   require "../classes/" . $classe . ".class.php";
+// });
 
 $titre = "Client";
 

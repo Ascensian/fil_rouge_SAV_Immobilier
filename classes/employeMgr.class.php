@@ -1,8 +1,9 @@
 <?php
+require_once("../classes/connexion.class.php");
 class EmployeMgr
 {
 
-    public static function getListEmploye(string $user, string $password,int $choix = PDO::FETCH_ASSOC)
+    public static function getListEmploye(string $user, string $password, int $choix = PDO::FETCH_ASSOC)
     {
 
         $sql = "SELECT IdEmploye, NomEmploye, PrenomEmploye FROM employe";

@@ -1,5 +1,6 @@
 <?php
-require("../classes/articleMgr.class.php");
+require_once("../classes/articleMgr.class.php");
+
 session_start();
 if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
     $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
@@ -22,14 +23,13 @@ if (isset($_POST["action"]) == 'ajoutArticle') {
 
 
 switch ($action) {
-    case "article" :
+    case "article":
         $numberArticle = articleMgr::getNumberArticles($_SESSION["userRole"],  $_SESSION["mdpRole"]);
         require('../vues/view_article.php');
         break;
-    case "ajoutArticle" :
+    case "ajoutArticle":
         $numberArticle = articleMgr::getNumberArticles($_SESSION["userRole"],  $_SESSION["mdpRole"]);
-        articleMgr::addArticle($_SESSION["userRole"],  $_SESSION["mdpRole"],$_POST['idArticle'], $_POST['libArticle'], $_POST['prixUnitaire'], $_POST['stock']);
+        articleMgr::addArticle($_SESSION["userRole"],  $_SESSION["mdpRole"], $_POST['idArticle'], $_POST['libArticle'], $_POST['prixUnitaire'], $_POST['stock']);
         require('../vues/view_article.php');
         break;
-    
 }
