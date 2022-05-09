@@ -1,16 +1,20 @@
 <?php
-spl_autoload_register(function ($classe) {
+/*spl_autoload_register(function ($classe) {
     require "../classes/" . $classe . ".class.php";
-});
+});*/
+require("../classes/ticketMgr.class.php");
 
 
 session_start();
-// var_dump($_SESSION);
+
+//var_dump($_SESSION);
+
 //Permet de bloquer l'affichage du contrôleur et de renvoyer vers la page de connexion
 if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
     $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";
     header("Refresh:0; url = ../index.php?action=connexion", false);
 }
+
 // Action par défault du contrôleur 
 $action = "ticket";
 // Message d'erreur initialiser au début du contrôleur
@@ -23,6 +27,7 @@ if (!isset($_SESSION["index"])) {
     // Si l'index existe dans la session, on l'incrémante à 1
     $_SESSION["index"] = 0;
 }
+
 // On récupère l'action que contient la méthode post et on l'applique à notre action
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -53,6 +58,7 @@ if ($table != "") {
 } else {
     $ticket = ticketMgr::getAllTickets($_SESSION["userRole"],  $_SESSION["mdpRole"]);
 }
+
 switch ($action) {
     case "ticket": // Action par défaut qui envoie les utilisateurs sur la page tout les tickets
         $_SESSION["posttri"] = "ticket";

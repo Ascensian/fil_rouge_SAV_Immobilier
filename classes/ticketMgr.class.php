@@ -1,7 +1,9 @@
 <?php // classes/ticketMgr.class.php
+require("../classes/connexion.class.php");
 
 class TicketMgr
 {
+	
     public static function getAllTickets(string $user, string $password, int $typeEnregisterment = PDO::FETCH_ASSOC)
     {
         $requete = "SELECT * FROM ticketsav";

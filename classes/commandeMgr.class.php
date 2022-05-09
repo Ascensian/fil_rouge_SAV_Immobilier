@@ -1,4 +1,5 @@
 <?php
+require("../classes/connexion.class.php");
 
 class CommandeMgr
 {
@@ -7,7 +8,6 @@ class CommandeMgr
         $sql = "SELECT * FROM commande";
 
         $resultset = Connexion::getConnexion($user, $password)->query($sql);
-
         $records = $resultset->fetchAll($choix);
         $resultset->closeCursor();
         Connexion::disconnect();
@@ -17,8 +17,9 @@ class CommandeMgr
     
     public static function getIdClientByIdCommande(string $user, string $password, string $idCommande, int $choix = PDO::FETCH_ASSOC)
     {
+		echo "ta mère";
         $sql = 'SELECT IdClient FROM commande WHERE IdCommande="' . $idCommande . '"';
-        $resultset = Connexion::getConnexion("root", "")->query($sql);
+        $resultset = Connexion::getConnexion($user, password)->query($sql);
         $records = $resultset->fetchAll($choix);
         $resultset->closeCursor();
         Connexion::disconnect();

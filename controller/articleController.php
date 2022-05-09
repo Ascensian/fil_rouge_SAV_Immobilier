@@ -1,8 +1,5 @@
 <?php
-spl_autoload_register(function ($classe) {
-    require "../classes/" . $classe . ".class.php";
-});
-
+require("../classes/articleMgr.class.php");
 session_start();
 if ($_SESSION['role'] == "ADMIN" or !isset($_SESSION['role']) or $_SESSION["deconnexion"] == 1) {
     $_SESSION["msgErreur"] = "Désolé, ce n'est pas la page que vous cherchez";

@@ -23,7 +23,7 @@
                     <img src="images/Menuiz Man.png" class="img-fluid" alt="Phone image">
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                    <form action="../index.php" method="POST">
+                    <form action="index.php" method="POST">
                         <!-- identifiant input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="identifiant">Identifiant</label>

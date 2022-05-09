@@ -1,7 +1,8 @@
 <?php
-spl_autoload_register(function ($classe) {
-    require "../classes/" . $classe . ".class.php";
-});
+
+require("./classes/clientMgr.class.php");
+
+//require("../classes/employeMgr.class.php");
 
 session_start();
 
@@ -63,7 +64,7 @@ switch($action){
     case "detailclient":
         $id = $_GET["id"];
         $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
-        $tabcom = CommandeMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
+        $tabcom = ClientMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
         require("../vues/view_detailsclient.php");
         break;
 }

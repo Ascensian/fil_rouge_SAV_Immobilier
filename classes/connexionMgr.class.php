@@ -1,5 +1,5 @@
 <?php
-
+require("connexion.class.php");
 class ConnexionMgr
 {
     public static function controleconnexion(string $user, string $password)

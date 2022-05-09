@@ -9,10 +9,17 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <?php echo '<link href="../css/ticket.css" rel="stylesheet">';
-  echo '<link href="../css/dashboard.css" rel="stylesheet">';
-  echo '<link href="../css/client1.css" rel="stylesheet">';
-  echo '<link rel="stylesheet" href="styleRecherche.css">';
+  <?php if ($_SESSION["index"] == 1) {
+    echo '<link href="css/ticket.css" rel="stylesheet">';
+    echo '<link href="css/dashboard.css" rel="stylesheet">';
+    echo '<link href="css/client1.css" rel="stylesheet">';
+    echo '<link rel="stylesheet" href="styleRecherche.css">';
+  } else {
+    echo '<link href="../css/ticket.css" rel="stylesheet">';
+    echo '<link href="../css/dashboard.css" rel="stylesheet">';
+    echo '<link href="../css/client1.css" rel="stylesheet">';
+    echo '<link rel="stylesheet" href="styleRecherche.css">';
+  }
   ?>
 
 
@@ -24,7 +31,11 @@
   <!-- NAVBAR  -->
 
   <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-    <img src="../images/Menuiz Man.png" id="img1" alt="">
+    <img src="<?php if ($_SESSION["index"] == 1) {
+                echo 'images/Menuiz Man.png';
+              } else {
+                echo '../images/Menuiz Man.png';
+              } ?>" id="img1" alt="">
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +45,7 @@
 
     <form id="barrerecherche" action="../controller/rechercheController" method="post">
       <input type="text" class="w-75" placeholder="Recherche" name="valeurRecherche">
-      <button type="submit"  name="action" value="recherche">Recherche</button>
+      <button type="submit" name="action" value="recherche">Recherche</button>
     </form>
 
 
@@ -145,17 +156,19 @@
       </div>
       <!-- FOOTER  -->
 
-      <script src="../Js/dashboard.js"></script>
-      <script src="../js/client.js"></script>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-      <script src="../Js/dashboard.js"></script>
-      <script src="../Js/ticket.js"></script>
+      <?php if ($_SESSION["index"] == 1) {
+        echo '<script src="Js/dashboard.js"></script>';
+      } else {
+        echo '<script src="../Js/ticket.js"></script>';
+      }
+      ?>
 </body>
 
 </html>

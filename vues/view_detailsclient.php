@@ -1,12 +1,10 @@
 <?php
 
-spl_autoload_register(function ($classe) {
-    require "../classes/" . $classe . ".class.php";
-});
+
 
 $titre = "Details";
 $client = ClientMgr::getClient($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
-$tabcom = CommandeMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
+$tabcom = ClientMgr::getCommande($_SESSION["userRole"],  $_SESSION["mdpRole"],$_GET['id']);
 -
 ob_start();
 echo $msg?>

@@ -48,10 +48,8 @@ class Connexion
     public static function getConnexion(string $user, string $password)
     {
         if (Connexion::$connexion != null) {
-
             return Connexion::$connexion;
         } else {
-
             return Connexion::connect($user, $password);
         }
     }
