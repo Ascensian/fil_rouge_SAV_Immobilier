@@ -1,9 +1,4 @@
 <?php
-if ($_SESSION["index"] == 0) {
-    require_once("../classes/connexion.class.php");
-} else {
-    require_once("connexion.class.php");
-}
 
 class EmployeMgr
 {

@@ -10,7 +10,7 @@ ob_start(); ?>
 <?php
 $tabclt = CommandeMgr::getListCommande($_SESSION["userRole"],  $_SESSION["mdpRole"]);
 ?>
-
+<?php var_dump($_SESSION)?>
 <h1>Commandes</h1>
 
 <div id="listcommande">

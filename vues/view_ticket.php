@@ -17,6 +17,9 @@ ob_start();
 
 
 <br>
+<?php var_dump($clientCommande);
+var_dump($ticket) ?>
+
 <h2 class="title">Tickets SAV</h2>
 <!-- <br>
 <form action="ticketController.php" method="post">
